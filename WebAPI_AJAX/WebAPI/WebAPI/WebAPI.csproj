@@ -157,10 +157,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ProjekatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,10 +169,11 @@
     <Compile Include="Models\Korisnik.cs" />
     <Compile Include="Models\Lokacija.cs" />
     <Compile Include="Models\Musterija.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Products.cs" />
+    <Compile Include="Models\Pol.cs" />
+    <Compile Include="Models\PostojeciKorisnici.cs" />
     <Compile Include="Models\StatusVoznje.cs" />
     <Compile Include="Models\TipAutomobila.cs" />
+    <Compile Include="Models\Uloge.cs" />
     <Compile Include="Models\Vozac.cs" />
     <Compile Include="Models\Voznja.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,7 +184,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -228,6 +226,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Projekat\Index.cshtml" />
+    <Content Include="Views\Projekat\Registracija.cshtml" />
+    <Content Include="Views\Projekat\PogresnaSifra.cshtml" />
+    <Content Include="Views\Projekat\Registrovani.cshtml" />
+    <Content Include="Views\Projekat\musterijaView.cshtml" />
+    <Content Include="Views\Projekat\KorisnikPostoji.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

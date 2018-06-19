@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration</h2>
+
+<h2>Registracija</h2>
+
+<html>
+<body>
+    <form action="/Projekat/Register">
+        <table border="1">
+            <tr>
+                <td colspan="2" align="center">Prijavite Se</td>
+            </tr>
+            <tr>
+                <td>
+                    Korisnicko Ime:
+                </td>
+                <td>
+                    <input type="text" name="ime" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sifra:
+                </td>
+                <td>
+                    <input type="text" name="prezime" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sifra:
+                </td>
+                <td>
+                    <select name="pol">
+                        <option value="musko">Musko</option>
+                        <option value="zensko">Zensko</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Korisnicko Ime:
+                </td>
+                <td>
+                    <input type="text" name="korisnicko_ime" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Sifra:
+                </td>
+                <td>
+                    <input type="text" name="password" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Jmbg:
+                </td>
+                <td>
+                    <input type="text" name="jmbg" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Broj Telefona:
+                </td>
+                <td>
+                    <input type="text" name="broj_telefona" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    E-mail:
+                </td>
+                <td>
+                    <input type="text" name="email" />
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Register" /></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

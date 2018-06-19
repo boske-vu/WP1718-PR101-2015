@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Prijava korisnika</h2>
+
+<html>
+
+<body>
+    <form action="/Projekat/LogIn">
+        <table border="1">
+            <tr>
+                <td colspan="2" align="center">Prijavite Se</td>
+            </tr>
+            <tr>
+                <td>
+                    Korisnicko Ime:
+                </td>
+                <td>
+                    <input type="text" name="korisnicko_ime" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sifra:
+                </td>
+                <td>
+                    <input type="text" name="password" />
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Log in" /></td>
+            </tr>
+        </table>
+    </form>
+
+    <h3>Registracija</h3>
+    @Html.ActionLink("Registracija", "RegisterStart");
+
+</body>
+</html>

@@ -5,9 +5,10 @@ using System.Web;
 
 namespace WebAPI.Models
 {
-    public class Product
+    public enum Uloge
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        Musterija,
+        Dispecer,
+        Vozac
     }
 }
