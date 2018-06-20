@@ -7,7 +7,6 @@ namespace WebAPI.Models
 {
     public class Dispecer: Korisnik
     {
-        public Dispecer() { }
         public Dispecer(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon,
         string email, Uloge uloga) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)
         {
@@ -20,7 +19,13 @@ namespace WebAPI.Models
             Kontakt_telefon = kontakt_telefon;
             Email = email;
             Uloga = uloga;
-            Voznja = new List<Models.Voznja>();
+            Ulogovan = false;
+        }
+
+        public Dispecer()
+        {
+            Voznja = new List<Voznja>();
+            Ulogovan = false;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace WebAPI.Models
 
         public Vozac() { }
 
-        public Vozac(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon, string email, Uloge uloga, Lokacija lokacija, Automobil automobil) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)
+        public Vozac(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon, string email, Uloge uloga, string ulica, string broj, string mesto, string postanski_broj) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)
         {
             Korisnicko_ime = korisnicko_ime;
             Lozinka = lozinka;
@@ -24,6 +24,13 @@ namespace WebAPI.Models
             Email = email;
             Uloga = uloga;
             Voznja = new List<Models.Voznja>();
+
+            Adresa a = new Adresa();
+            a.Ulica = ulica;
+            a.Broj = broj;
+            a.PostanskiBroj = postanski_broj;
+            a.Mesto = mesto;
+            
         }
     }
 }

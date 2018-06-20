@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "DodajVozaca";
+}
+
+<h2>DodajVozaca</h2>
+
+<html>
+<head>
+    <script>
+        function goBack()
+        {
+            window.history.back();
+        }
+    </script>
+</head>
+<body style="background-color:skyblue">
+
+    <h2>Unos novog vozača</h2>
+
+    <form action="/Projekat/DodajVozaca">
+        <table>
+            <tr>
+                <td colspan="2">Dodavanje vozaca</td>
+            </tr>
+            <tr>
+                <td>Ime:</td>
+                <td><input type="text" name="ime" /></td>
+            </tr>
+            <tr>
+                <td>Prezime:</td>
+                <td><input type="text" name="prezime" /></td>
+            </tr>
+            <tr>
+                <td>Pol:</td>
+                <td>
+                    <select name="pol">
+                        <option value="muski">Muski</option>
+                        <option value="zenski">Zenski</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Korisnicko ime:</td>
+                <td><input type="text" name="korisnicko_ime" /></td>
+            </tr>
+
+            <tr>
+                <td>Jmbg:</td>
+                <td><input type="text" name="jmbg" /></td>
+            </tr>
+            
+            <tr>
+                <td>Lozinka:</td>
+                <td><input type="text" name="lozinka" /></td>
+            </tr>
+            <tr>
+                <td>E-mail:</td>
+                <td><input type="text" name="email" /></td>
+            </tr>
+            <tr>
+                <td>Broj telefona:</td>
+                <td><input type="text" name="kontakt_broj" /></td>
+            </tr>
+            <tr>
+                <td>Ulica:</td>
+                <td><input type="text" name="ulica" /></td>
+            </tr>
+            <tr>
+                <td>Broj:</td>
+                <td><input type="text" name="broj" /></td>
+            </tr>
+            <tr>
+                <td>Mesto:</td>
+                <td><input type="text" name="mesto" /></td>
+            </tr>
+            <tr>
+                <td>Pozivni broj:</td>
+                <td><input type="text" name="postanski_broj" /></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="submit" value="Sačuvaj" /></td>
+            </tr>
+        </table>
+    </form>
+    <button onclick="goBack()">Vrati se na profil</button>
+</body>
+</html>

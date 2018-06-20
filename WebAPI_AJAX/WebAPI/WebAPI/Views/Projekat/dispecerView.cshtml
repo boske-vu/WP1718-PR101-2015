@@ -1,7 +1,76 @@
-﻿
+﻿@model WebAPI.Models.Dispecer
 @{
     ViewBag.Title = "dispecerView";
 }
 
 <h2>dispecerView</h2>
 
+<html>
+<body style="background-color:skyblue">
+    <div style="text-align:right">
+        <form action="/Taxi/OdjaviDispecer">
+            <input type="submit" value="Odjavi se" />
+        </form>
+    </div>
+    <div style="text-align:center">
+        <h2>Dobrodošli @Model.Korisnicko_ime</h2>
+    </div>
+    <div style="text-align:center">
+        <table align="center">
+            <tr>
+                <td width="50">
+                    <form action="/Projekat/DodajVozacaStart">
+                        <input type="submit" value="Dodaj vozaca" />
+                    </form>
+                </td>
+                <td width="50">
+                    <form action="/Projekat/IzmeniPodatke">
+                        <input type="submit" value="Izmeni podatke" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <table>
+        <tr>
+            <td colspan="2" align="center"><b>Vaši podaci</b></td>
+        </tr>
+
+        <tr>
+            <td>Ime:</td>
+            <td><label>@Model.Ime</label></td>
+        </tr>
+
+        <tr>
+            <td>Prezime:</td>
+            <td><label>@Model.Prezime</label></td>
+        </tr>
+
+        <tr>
+            <td>Jmbg:</td>
+            <td><label>@Model.Jmbg</label></td>
+        </tr>
+
+        <tr>
+            <td>Pol:</td>
+            <td>
+                <label>@Model.Pol</label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Korisničko ime:</td>
+            <td><label>@Model.Korisnicko_ime</label></td>
+        </tr>
+        <tr>
+            <td>E-Mail:</td>
+            <td><label>@Model.Email</label></td>
+        </tr>
+        <tr>
+            <td>Broj telefona:</td>
+            <td><label>@Model.Kontakt_telefon</label></td>
+        </tr>
+    </table>
+</body>
+</html>

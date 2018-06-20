@@ -9,17 +9,18 @@ namespace WebAPI.Models
     {
         //u formatu: Ulica broj, Naseljeno mesto Pozivni broj mesta(npr.Sutjeska 3, Novi Sad 21000)
         public string Ulica { get; set; }
-        public int Broj { get; set; }
+        public string Broj { get; set; }
 
         public string Mesto { get; set; }
-        public string PozivniBroj { get; set; }
+        public string PostanskiBroj { get; set; }
 
-        public Adresa(string ulica, int broj, string mesto, string pozitivniBroj)
+        public Adresa() { }
+        public Adresa(string ulica, string broj, string mesto, string postanskiBroj)
         {
             Ulica = ulica;
             Broj = broj;
             Mesto = mesto;
-            PozivniBroj = pozitivniBroj;
+            PostanskiBroj = postanskiBroj;
         }
 
     }
