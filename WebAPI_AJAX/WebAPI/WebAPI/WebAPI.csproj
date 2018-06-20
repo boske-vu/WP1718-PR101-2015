@@ -232,6 +232,8 @@
     <Content Include="Views\Projekat\Registrovani.cshtml" />
     <Content Include="Views\Projekat\musterijaView.cshtml" />
     <Content Include="Views\Projekat\KorisnikPostoji.cshtml" />
+    <Content Include="Views\Projekat\NePostojiKorisnik.cshtml" />
+    <Content Include="Views\Projekat\dispecerView.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
