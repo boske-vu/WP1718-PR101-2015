@@ -55,7 +55,7 @@ namespace WebAPI
 
                 file.Close();
             }
-
+            
             using (XmlWriter writer = XmlWriter.Create(@"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml"))
             {
                 writer.WriteStartDocument();
@@ -64,7 +64,6 @@ namespace WebAPI
                 foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
                 {
                     writer.WriteStartElement("Korisnici");
-
 
                     writer.WriteElementString("Ime", k.Ime);
                     writer.WriteElementString("Prezime", k.Prezime);
@@ -81,10 +80,7 @@ namespace WebAPI
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
-            // Read the file as one string.
-            string text = System.IO.File.ReadAllText(@"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\dispeceri.txt");
-
-            System.IO.File.WriteAllText(@"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\upis.txt", text);
+       
         }
     }
 }
