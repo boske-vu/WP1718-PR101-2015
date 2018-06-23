@@ -18,6 +18,7 @@ namespace WebAPI.Models
         public Komentar Komentar { get; set; }
         public StatusVoznje StatusVoznje { get; set; }
 
+        public Voznja() { }
         public Voznja(DateTime datum_i_vreme, Lokacija lokacijaNaKojuTaksiDolazi, TipAutomobila tipAutomobila, Musterija musterija, Lokacija odrediste, Dispecer dispecer, Vozac vozac, double iznos, Komentar komentar, StatusVoznje statusVoznje)
         {
             Datum_i_vreme = datum_i_vreme;

@@ -19,7 +19,15 @@ namespace WebAPI.Models
         public Uloge Uloga { get; set; }
         public List<Voznja> Voznja { get; set; }
         public bool Ulogovan { get; set; }
+
         public Korisnik() { }
+
+        public Korisnik(List<Voznja> v)
+        {
+            v = new List<Voznja>();
+            Ulogovan = false;
+        }
+
         public Korisnik(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon,
         string email, Uloge uloga)
         {
@@ -32,8 +40,10 @@ namespace WebAPI.Models
             Kontakt_telefon = kontakt_telefon;
             Email = email;
             Uloga = uloga;
-            Voznja = new List<Models.Voznja>();
+            Ulogovan = false;
         }
+
+       
 
     }
 }

@@ -55,6 +55,21 @@ namespace WebAPI.Controllers
                 }
             }
 
+            string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
+
+            if (System.IO.File.Exists(path))
+            {
+                XmlDocument xDoc = new XmlDocument();
+                xDoc.Load(path);
+
+                var allNodes = xDoc.GetElementsByTagName("Vozac");
+                var lastNode = allNodes[allNodes.Count - 1];
+                XmlElement node = SerializeToXmlElement(new Vozac(korisnicko_ime, lozinka, ime, prezime, p, jmbg, kontakt_broj, email, Uloge.Vozac, ulica, broj, mesto, postanski_broj));
+                XmlNode importNode = xDoc.ImportNode(node, true);
+                xDoc.DocumentElement.AppendChild(importNode);
+                xDoc.Save(path);
+            }
+
             PostojeciKorisnici.ListaVozaca.Add(v);
             PostojeciKorisnici.ListaKorisnika.Add(v);
 
@@ -146,7 +161,25 @@ namespace WebAPI.Controllers
             PostojeciKorisnici.ListaKorisnika.Add(m);
             PostojeciKorisnici.ListaMusterija.Add(m as Musterija);
 
-            /* */
+            string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
+            //XmlSerializer serializer = new XmlSerializer(typeof(Musterija));
+            if (System.IO.File.Exists(path))
+            {
+                XmlDocument xDoc = new XmlDocument();
+                xDoc.Load(path);
+
+                var allNodes = xDoc.GetElementsByTagName("Musterija");
+                var lastNode = allNodes[allNodes.Count - 1];
+                XmlElement node = SerializeToXmlElement(new Musterija(korisnicko_ime, password, ime, prezime, p, jmbg, broj_telefona, email, Uloge.Musterija));
+                XmlNode importNode = xDoc.ImportNode(node, true);
+                xDoc.DocumentElement.AppendChild(importNode);
+                xDoc.Save(path);
+            }
+            else
+            {
+                Console.WriteLine("Greska jer nema dispecera");
+            }
+            /* 
             string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
             if (!System.IO.File.Exists(path))
             {
@@ -179,10 +212,10 @@ namespace WebAPI.Controllers
                 XDocument xDocument = XDocument.Load(path);
                 XElement root = xDocument.Element("Korisnici");
                 IEnumerable<XElement> rows = root.Descendants("Musterije");
-                /*
+                
                 XElement firstRow = rows.First();
                 firstRow.AddBeforeSelf(
-                   */
+                   
                 new XElement("Ime", ime);
                 new XElement("Prezime", prezime);
                 new XElement("Pol", pol.ToString());
@@ -246,8 +279,8 @@ namespace WebAPI.Controllers
             }
             */
 
-                return View("Registrovani", m);
+            return View("Registrovani", m);
             } 
         }
     }
-}
+

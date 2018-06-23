@@ -12,6 +12,7 @@ namespace WebAPI.Models
 
         public Adresa Adresa { get; set; }
 
+        public Lokacija() { }
         public Lokacija(string kx, string ky, Adresa adresa)
         {
             KoordinataX = kx;

@@ -13,6 +13,7 @@ namespace WebAPI.Models
      public Voznja Voznja { get; set; }
      public int OcenaVoznje { get; set; }
 
+        public Komentar() { }
         public Komentar(string opis, DateTime datumObjave, Voznja voznja, int ocenaVoznje)
         {
             Opis = opis;

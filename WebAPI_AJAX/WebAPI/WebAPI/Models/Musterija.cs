@@ -7,6 +7,7 @@ namespace WebAPI.Models
 {
     public class Musterija : Korisnik
     {
+        public Musterija() { }
         public Musterija(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon,
        string email, Uloge uloga) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)
         {
@@ -22,9 +23,9 @@ namespace WebAPI.Models
             Ulogovan = false;
         }
 
-        public Musterija()
+        public Musterija(List<Voznja> v)
         {
-            Voznja = new List<Models.Voznja>();
+            v = new List<Voznja>();
             Ulogovan = false;
         }
     }

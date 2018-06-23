@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -7,12 +8,23 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Xml;
+using System.Xml.Serialization;
 using WebAPI.Models;
 
 namespace WebAPI
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
+        public static XmlElement SerializeToXmlElement(object o)
+        {
+            XmlDocument doc = new XmlDocument();
+            using (XmlWriter writer = doc.CreateNavigator().AppendChild())
+            {
+                new XmlSerializer(o.GetType()).Serialize(writer, o);
+            }
+            return doc.DocumentElement;
+        }
+
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
@@ -55,7 +67,66 @@ namespace WebAPI
 
                 file.Close();
             }
-            
+
+            string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
+           // XmlSerializer serializer = new XmlSerializer(typeof(Korisnik));
+            if (System.IO.File.Exists(path))
+            {
+                foreach (Korisnik k in PostojeciKorisnici.ListaMusterija)
+                {
+                    XmlDocument xDoc = new XmlDocument();
+                    xDoc.Load(path);
+
+                    var allNodes = xDoc.GetElementsByTagName("Musterija");
+                    var lastNode = allNodes[allNodes.Count - 1];
+                    XmlElement node = SerializeToXmlElement(new Korisnik(k.Korisnicko_ime, k.Lozinka, k.Ime, k.Prezime, k.Pol, k.Kontakt_telefon, k.Email, k.Jmbg, k.Uloga));
+                    XmlNode importNode = xDoc.ImportNode(node, true);
+                    xDoc.DocumentElement.AppendChild(importNode);
+                    xDoc.Save(path);
+                }
+
+                foreach (Korisnik k in PostojeciKorisnici.ListaVozaca)
+                {
+                    XmlDocument xDoc = new XmlDocument();
+                    xDoc.Load(path);
+
+                    var allNodes = xDoc.GetElementsByTagName("Vozac");
+                    var lastNode = allNodes[allNodes.Count - 1];
+                    XmlElement node = SerializeToXmlElement(new Korisnik(k.Korisnicko_ime, k.Lozinka, k.Ime, k.Prezime, k.Pol, k.Kontakt_telefon, k.Email, k.Jmbg, k.Uloga));
+                    XmlNode importNode = xDoc.ImportNode(node, true);
+                    xDoc.DocumentElement.AppendChild(importNode);
+                    xDoc.Save(path);
+                }
+            }
+            else
+            {
+                using (XmlWriter writer = XmlWriter.Create(@"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml"))
+                {
+                    writer.WriteStartDocument();
+                    writer.WriteStartElement("Korisnici");
+
+                    foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
+                    {
+                        writer.WriteStartElement("Korisnici");
+
+                        writer.WriteElementString("Ime", k.Ime);
+                        writer.WriteElementString("Prezime", k.Prezime);
+                        writer.WriteElementString("Pol", k.Pol.ToString());
+                        writer.WriteElementString("KorisnickoIme", k.Korisnicko_ime);
+                        writer.WriteElementString("Sifra", k.Lozinka);
+                        writer.WriteElementString("JMBG", k.Jmbg);
+                        writer.WriteElementString("KontaktTelefon", k.Kontakt_telefon);
+                        writer.WriteElementString("EMail", k.Email);
+                        writer.WriteElementString("Uloga", k.Uloga.ToString());
+                        writer.WriteEndElement();
+                    }
+
+                    writer.WriteEndElement();
+                    writer.WriteEndDocument();
+                }
+            }
+
+            /*
             using (XmlWriter writer = XmlWriter.Create(@"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml"))
             {
                 writer.WriteStartDocument();
@@ -80,7 +151,7 @@ namespace WebAPI
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
             }
-       
+       */
         }
     }
 }

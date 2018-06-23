@@ -1,1 +1,96 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Korisnici><Korisnici><Ime>Luka</Ime><Prezime>Bosanac</Prezime><Pol>Muski</Pol><KorisnickoIme>boske</KorisnickoIme><Sifra>vukovar</Sifra><JMBG>31090913934309</JMBG><KontaktTelefon>065343938</KontaktTelefon><EMail>boske@live.com</EMail><Uloga>Dispecer</Uloga></Korisnici><Korisnici><Ime>Bogdan</Ime><Prezime>Kovacev</Prezime><Pol>Muski</Pol><KorisnickoIme>bosa</KorisnickoIme><Sifra>karavukovo</Sifra><JMBG>394934893</JMBG><KontaktTelefon>064293892</KontaktTelefon><EMail>bogi@gmail.com</EMail><Uloga>Dispecer</Uloga></Korisnici><Korisnici><Ime>Aleksandar</Ime><Prezime>Jancikin</Prezime><Pol>Muski</Pol><KorisnickoIme>janpi</KorisnickoIme><Sifra>vinjak</Sifra><JMBG>389328233</JMBG><KontaktTelefon>064323929</KontaktTelefon><EMail>api@hotmail.com</EMail><Uloga>Dispecer</Uloga></Korisnici></Korisnici>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Korisnici>
+  <Korisnici>
+    <Ime>Luka</Ime>
+    <Prezime>Bosanac</Prezime>
+    <Pol>Muski</Pol>
+    <KorisnickoIme>boske</KorisnickoIme>
+    <Sifra>vukovar</Sifra>
+    <JMBG>31090913934309</JMBG>
+    <KontaktTelefon>065343938</KontaktTelefon>
+    <EMail>boske@live.com</EMail>
+    <Uloga>Dispecer</Uloga>
+  </Korisnici>
+  <Korisnici>
+    <Ime>Bogdan</Ime>
+    <Prezime>Kovacev</Prezime>
+    <Pol>Muski</Pol>
+    <KorisnickoIme>bosa</KorisnickoIme>
+    <Sifra>karavukovo</Sifra>
+    <JMBG>394934893</JMBG>
+    <KontaktTelefon>064293892</KontaktTelefon>
+    <EMail>bogi@gmail.com</EMail>
+    <Uloga>Dispecer</Uloga>
+  </Korisnici>
+  <Korisnici>
+    <Ime>Aleksandar</Ime>
+    <Prezime>Jancikin</Prezime>
+    <Pol>Muski</Pol>
+    <KorisnickoIme>janpi</KorisnickoIme>
+    <Sifra>vinjak</Sifra>
+    <JMBG>389328233</JMBG>
+    <KontaktTelefon>064323929</KontaktTelefon>
+    <EMail>api@hotmail.com</EMail>
+    <Uloga>Dispecer</Uloga>
+  </Korisnici>
+  <Musterija xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>ejkfj</Korisnicko_ime>
+    <Lozinka>wjrie</Lozinka>
+    <Ime>fido</Ime>
+    <Prezime>ifj</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>98098</Jmbg>
+    <Kontakt_telefon>39439</Kontakt_telefon>
+    <Email>y@</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+  </Musterija>
+  <Musterija xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>efjeij</Korisnicko_ime>
+    <Lozinka>efji</Lozinka>
+    <Ime>djfkd</Ime>
+    <Prezime>kjij</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>3939</Jmbg>
+    <Kontakt_telefon>fjdji</Kontakt_telefon>
+    <Email>3@</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+  </Musterija>
+  <Vozac xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>gaga1</Korisnicko_ime>
+    <Lozinka />
+    <Ime>gaga</Ime>
+    <Prezime />
+    <Pol>Muski</Pol>
+    <Jmbg />
+    <Kontakt_telefon />
+    <Email />
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+  </Vozac>
+  <Musterija xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime />
+    <Lozinka />
+    <Ime>d</Ime>
+    <Prezime />
+    <Pol>Muski</Pol>
+    <Jmbg>d</Jmbg>
+    <Kontakt_telefon />
+    <Email />
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+  </Musterija>
+  <Vozac xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>kfdk</Korisnicko_ime>
+    <Lozinka />
+    <Ime>loooo</Ime>
+    <Prezime />
+    <Pol>Muski</Pol>
+    <Jmbg />
+    <Kontakt_telefon />
+    <Email />
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+  </Vozac>
+</Korisnici>
