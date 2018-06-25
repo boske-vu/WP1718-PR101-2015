@@ -29,7 +29,7 @@ namespace WebAPI.Models
             Kontakt_telefon = kontakt_telefon;
             Email = email;
             Uloga = uloga;
-            //Voznja = new List<Models.Voznja>();
+            listaVoznja = new List<Models.Voznja>();
 
             Adresa a = new Adresa();
             a.Ulica = ulica;

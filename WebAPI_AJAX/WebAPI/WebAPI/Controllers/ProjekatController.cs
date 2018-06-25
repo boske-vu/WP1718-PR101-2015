@@ -29,6 +29,72 @@ namespace WebAPI.Controllers
             return View("DodajVozaca");
         }
 
+        public ActionResult ZatraziVoznjuMusterija()
+        {
+            return View();
+        }
+
+        public ActionResult ZatrazenaVoznja(string ulica, string broj, string mesto, string postanski_broj, string tip_vozila, string x, string y)
+        {
+            Musterija m = HttpContext.Application["Musterija"] as Musterija;
+
+            Voznja v = new Voznja();
+            Adresa a = new Adresa(ulica, broj, mesto, postanski_broj);
+            Lokacija l = new Lokacija(x, y, a);
+
+            v.Datum_i_vreme = DateTime.Now;
+            v.LokacijaNaKojuTaksiDolazi = l;
+
+            if (tip_vozila == "kombi")
+                v.TipAutomobila = TipAutomobila.kombi;
+            else
+                v.TipAutomobila = TipAutomobila.putnickiAutomobil;
+
+            v.Musterija = m;
+
+            v.StatusVoznje = StatusVoznje.Formirana;
+            Komentar k = new Komentar("d", DateTime.Now, v, 3);
+            Dispecer d = new Dispecer();
+            Vozac vozac = new Vozac();
+            v.Komentar = k;
+            v.Dispecer = d;
+            v.Vozac = vozac;
+            v.Iznos = 24;
+            
+            m.listaVoznja.Add(v);
+
+            string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
+            //XmlSerializer serializer = new XmlSerializer(typeof(Musterija));
+            if (System.IO.File.Exists(path))
+            {
+
+                foreach (Musterija m1 in PostojeciKorisnici.ListaKorisnika)
+                {
+                    if (m1.Korisnicko_ime.Equals(m.Korisnicko_ime))
+                    {
+                        m1.listaVoznja = m.listaVoznja;
+
+                        XmlDocument xDoc = new XmlDocument();
+                        xDoc.Load(path);
+
+                        var allNodes = xDoc.GetElementsByTagName("Voznja");
+                        var lastNode = allNodes[allNodes.Count - 1];
+                        XmlElement node = SerializeToXmlElement(new Voznja(v.Datum_i_vreme, v.LokacijaNaKojuTaksiDolazi, v.TipAutomobila, v.Musterija, v.Odrediste, v.Dispecer, v.Vozac, v.Iznos, v.Komentar, v.StatusVoznje));
+                        XmlNode importNode = xDoc.ImportNode(node, true);
+                        xDoc.DocumentElement.AppendChild(importNode);
+                        xDoc.Save(path);
+                    }
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Greska jer nema dispecera");
+            }
+
+
+            return View();
+        }
         public ActionResult DodajVozaca(string ime, string prezime, string pol, string korisnicko_ime, string jmbg, string lozinka, string email, string kontakt_broj, string ulica, string broj, string mesto, string postanski_broj)
         {
             Pol p = Pol.Muski;
@@ -132,6 +198,7 @@ namespace WebAPI.Controllers
             }
             return doc.DocumentElement;
         }
+
         public ActionResult Register(string ime, string prezime, string pol, string korisnicko_ime, string password, string email, string broj_telefona, string jmbg)
         {
             Pol p = Pol.Muski;
@@ -144,7 +211,7 @@ namespace WebAPI.Controllers
                     p = Pol.Zenski;
                     break;
             }
-
+            
             Korisnik m = new Musterija(korisnicko_ime, password, ime, prezime, p, jmbg, broj_telefona, email, Uloge.Musterija);
 
             if (PostojeciKorisnici.ListaMusterija != null)

@@ -12,6 +12,7 @@ namespace WebAPI.Models
         public static List<Dispecer> ListaDispecera { get; set; }
 
         public static List<Korisnik> ListaKorisnika { get; set; }
+        public static List<Voznja> ListaSvihVoznji { get; set; }
 
         public PostojeciKorisnici()
         {
@@ -19,6 +20,7 @@ namespace WebAPI.Models
             ListaVozaca = new List<Vozac>();
             ListaDispecera = new List<Dispecer>();
             ListaKorisnika = new List<Korisnik>();
+            ListaSvihVoznji = new List<Voznja>();
         }
     }
 }

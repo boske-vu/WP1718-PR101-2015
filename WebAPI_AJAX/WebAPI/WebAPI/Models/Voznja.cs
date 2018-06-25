@@ -19,12 +19,12 @@ namespace WebAPI.Models
         public StatusVoznje StatusVoznje { get; set; }
 
         public Voznja() { }
-        public Voznja(DateTime datum_i_vreme, Lokacija lokacijaNaKojuTaksiDolazi, TipAutomobila tipAutomobila, Musterija musterija, Lokacija odrediste, Dispecer dispecer, Vozac vozac, double iznos, Komentar komentar, StatusVoznje statusVoznje)
+        public Voznja(DateTime datum_i_vreme, Lokacija lokacijaNaKojuTaksiDolazi, TipAutomobila tipAutomobila, Musterija m, Lokacija odrediste, Dispecer dispecer, Vozac vozac, double iznos, Komentar komentar, StatusVoznje statusVoznje)
         {
             Datum_i_vreme = datum_i_vreme;
             LokacijaNaKojuTaksiDolazi = lokacijaNaKojuTaksiDolazi;
             TipAutomobila = tipAutomobila;
-            Musterija = musterija;
+            Musterija = m;
             Odrediste = odrediste;
             Dispecer = dispecer;
             Vozac = vozac;

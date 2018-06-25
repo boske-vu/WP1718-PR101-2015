@@ -34,6 +34,10 @@ namespace WebAPI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             
             PostojeciKorisnici pk = new PostojeciKorisnici();
+
+            Musterija m = new Musterija("dls", "dfd", "dsfj", "djfi", Pol.Muski, "wfeijf", "sfji", "fdjfij", Uloge.Musterija);
+            PostojeciKorisnici.ListaKorisnika.Add(m);
+            PostojeciKorisnici.ListaMusterija.Add(m);
             
             if(PostojeciKorisnici.ListaDispecera.Count() == 0)
             {
@@ -108,16 +112,16 @@ namespace WebAPI
                     foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
                     {
                         writer.WriteStartElement("Korisnici");
-
+                        writer.WriteElementString("KorisnickoIme", k.Korisnicko_ime);
+                        writer.WriteElementString("Sifra", k.Lozinka);
                         writer.WriteElementString("Ime", k.Ime);
                         writer.WriteElementString("Prezime", k.Prezime);
                         writer.WriteElementString("Pol", k.Pol.ToString());
-                        writer.WriteElementString("KorisnickoIme", k.Korisnicko_ime);
-                        writer.WriteElementString("Sifra", k.Lozinka);
                         writer.WriteElementString("JMBG", k.Jmbg);
                         writer.WriteElementString("KontaktTelefon", k.Kontakt_telefon);
                         writer.WriteElementString("EMail", k.Email);
                         writer.WriteElementString("Uloga", k.Uloga.ToString());
+                        writer.WriteElementString("Uloga", k.Ulogovan.ToString());
                         writer.WriteEndElement();
                     }
 

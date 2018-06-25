@@ -236,6 +236,8 @@
     <Content Include="Views\Projekat\dispecerView.cshtml" />
     <Content Include="Views\Projekat\DodajVozaca.cshtml" />
     <Content Include="Views\Projekat\VozacDodan.cshtml" />
+    <Content Include="Views\Projekat\ZatraziVoznjuMusterija.cshtml" />
+    <Content Include="Views\Projekat\ZatrazenaVoznja.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

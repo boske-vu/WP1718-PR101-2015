@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "ZatraziVoznjuMusterija";
+}
+
+<h2>ZatraziVoznjuMusterija</h2>
+
+<html>
+<body style="background-color:skyblue">
+    <div style="text-align:center">
+        <h2><b>Zahtev za vožnju</b></h2>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <form action="/Projekat/ZatrazenaVoznja">
+        <table>
+            <tr>
+                <td><b>Vaša lokacija(ulica,broj,mesto,postanški broj)</b></td>
+                <td><input type="text" name="ulica" /></td>
+                <td><input type="text" name="broj" /></td>
+                <td><input type="text" name="mesto" /></td>
+                <td><input type="text" name="postanski_broj" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        Odaberite tip vozila:
+                    </b>
+                </td>
+                <td>
+                    <select name="tip_vozila">
+                        <option value="putnicko">Putničko</option>
+                        <option value="kombi">Kombi</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        Odaberite koordinate x i y:
+                    </b>
+                </td>
+                <td><input type="text" name="x" /></td>
+                <td><input type="text" name="y" /></td>
+            </tr>
+<tr>
+                <td colspan="2">
+                    <input type="submit" value="Zatraži vožnju" />
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>
