@@ -10,9 +10,9 @@ namespace WebAPI.Models
        
 
         public Vozac Vozac { get; set; }
-        public int GodisteAutomobila { get; set; }
+        public string GodisteAutomobila { get; set; }
         public string BrojRegistarskeOznake { get; set; }
-        public int BrojTaksiVozila { get; set; }
+        public string BrojTaksiVozila { get; set; }
         public TipAutomobila Tip { get; set; }
 
 
@@ -20,7 +20,7 @@ namespace WebAPI.Models
         {
         }
 
-        public Automobil(Vozac vozac, int godisteAutomobila, string brojRegistarskeOznake, int brojTaksiVozila, TipAutomobila t)
+        public Automobil(Vozac vozac, string godisteAutomobila, string brojRegistarskeOznake, string brojTaksiVozila, TipAutomobila t)
         {
             Vozac = vozac;
             GodisteAutomobila = godisteAutomobila;

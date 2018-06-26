@@ -1,7 +1,15 @@
-﻿
+﻿@model WebAPI.Models.Vozac
 @{
     ViewBag.Title = "VozacDodan";
 }
 
-<h2>VozacDodan</h2>
-
+<html>
+<body style="background-color:skyblue">
+    <div style="text-align:center">
+        <h1>Registrovani vozac: @Model.Ime @Model.Prezime</h1>
+    </div>
+    <form action="/Projekat/VratiProfilDisp">
+        <input type="submit" value="Vrati se na profil" />
+    </form>
+</body>
+</html>

@@ -242,13 +242,16 @@
     <Content Include="Views\Projekat\DispecerEdit.cshtml" />
     <Content Include="Views\Projekat\DispecerZakazujeVoznju.cshtml" />
     <Content Include="Views\Projekat\DispecerZatrazioVoznju.cshtml" />
+    <Content Include="Views\Projekat\PromeniLokacijuVozaca.cshtml" />
+    <Content Include="Views\Projekat\vozacView.cshtml" />
+    <Content Include="Views\Projekat\EditVozac.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

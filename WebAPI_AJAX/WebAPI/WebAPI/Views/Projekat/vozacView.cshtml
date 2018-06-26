@@ -1,0 +1,63 @@
+﻿@model WebAPI.Models.Vozac
+@{
+    ViewBag.Title = "vozacView";
+    ViewBag.Vozac = Model;
+}
+
+<html>
+<body style="background-color:skyblue">
+    <div style="text-align:center">
+        <h2>Dobrodošli @Model.Korisnicko_ime</h2>
+        <h3>Vaša trenutna lokacija je: @Model.Lokacija.Adresa.Ulica @Model.Lokacija.Adresa.Broj, @Model.Lokacija.Adresa.PostanskiBroj @Model.Lokacija.Adresa.Mesto</h3>
+        <table>
+            <tr>
+                <td colspan="2">
+                    Podaci o vašem automobilu:
+                </td>
+            </tr>
+            <tr>
+                <td>Broj vozila</td>
+                <td>Godište</td>
+                <td>Registraciona oznaka</td>
+                <td>Tip automobila</td>
+            </tr>
+            <tr>
+                <td>
+                    @Model.Automobil.BrojTaksiVozila
+                </td>
+                <td>
+                    @Model.Automobil.GodisteAutomobila
+                </td>
+                <td>
+                    @Model.Automobil.BrojRegistarskeOznake
+                </td>
+                <td>
+                    @Model.Automobil.Tip
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="text-align:right">
+        <form action="/Projekat/OdjaviVozac">
+            <input type="submit" value="Odjavi se" />
+        </form>
+    </div>
+    <div style="text-align:center">
+        <table>
+            <tr>
+                <td>
+                    <form action="/Projekat/PromeniLokacijuVozaca">
+                        <input type="hidden" value="@Model" />
+                        <input type="submit" value="Promeni lokaciju" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/Projekat/EditVozac">
+                        <input type="submit" value="Izmeni lične podatke" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

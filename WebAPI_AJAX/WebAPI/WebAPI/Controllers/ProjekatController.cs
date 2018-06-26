@@ -34,6 +34,12 @@ namespace WebAPI.Controllers
             return View();
         }
 
+        public ActionResult EditVozac()
+        {
+            Vozac v = HttpContext.Application["Vozac"] as Vozac;
+            return View(v);
+        }
+
         public ActionResult IzmeniPodatkeMusterija(string ime, string prezime, string pol, string jmbg, string korisnicko, string lozinka, string mail, string broj)
         {
             Musterija ret = new Musterija();
@@ -77,6 +83,51 @@ namespace WebAPI.Controllers
             //Sacuvaj(Registrovani.SviZajedno);
 
             return View("musterijaWelcome", ret);
+        }
+
+        public ActionResult IzmeniPodatkeVozac(string ime, string prezime, string pol, string jmbg, string korisnicko, string lozinka, string mail, string broj)
+        {
+            Vozac ret = new Vozac();
+            Pol p = Pol.Muski;
+            switch (pol)
+            {
+                case "muski":
+                    p = Pol.Muski;
+                    break;
+                case "zenski":
+                    p = Pol.Zenski;
+                    break;
+            }
+
+            foreach (Vozac d in PostojeciKorisnici.ListaVozaca)
+            {
+                if (d.Korisnicko_ime == korisnicko)
+                {
+                    d.Ime = ime;
+                    d.Prezime = prezime;
+                    d.Pol = p;
+                    d.Jmbg = jmbg;
+                    d.Lozinka = lozinka;
+                    d.Kontakt_telefon = broj;
+                    d.Email = mail;
+                    ret = d;
+                    break;
+                }
+            }
+            Korisnik korisnik = new Korisnik();
+
+            foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (k.Korisnicko_ime == ret.Korisnicko_ime)
+                {
+                    korisnik = ret;
+                    break;
+                }
+            }
+
+         
+
+            return View("vozacView", ret);
         }
 
         public ActionResult MusterijaEdit()
@@ -153,8 +204,7 @@ namespace WebAPI.Controllers
         #region dodajVozaca
         public ActionResult DodajVozaca(string ime, string prezime, string pol, string korisnicko_ime, string jmbg, string lozinka, string email, string kontakt_broj, string ulica, string broj, string mesto, string postanski_broj, string godiste, string reg, string taxiBroj, string tip)
         {
-            int god = Int32.Parse(godiste);
-            int br = Int32.Parse(taxiBroj);
+           
             TipAutomobila ti = TipAutomobila.kombi;
 
             switch (tip)
@@ -167,7 +217,6 @@ namespace WebAPI.Controllers
                     break;
             }
 
-
             Pol p = Pol.Muski;
             if (pol.Equals("muski"))
                 p = Pol.Muski;
@@ -176,7 +225,7 @@ namespace WebAPI.Controllers
 
             Vozac v = new Vozac(korisnicko_ime, lozinka, ime, prezime, p, jmbg, kontakt_broj, email, Uloge.Vozac, ulica, broj, mesto, postanski_broj);
 
-            Automobil a = new Automobil(v, god, reg, br, ti);
+            Automobil a = new Automobil(v, godiste, reg, taxiBroj, ti);
 
             v.Automobil = a;
 
@@ -214,7 +263,7 @@ namespace WebAPI.Controllers
             PostojeciKorisnici.ListaVozaca.Add(v);
             PostojeciKorisnici.ListaKorisnika.Add(v);
 
-            return View("VozacDodan");
+            return View("VozacDodan", v);
         }
 #endregion
 
@@ -605,6 +654,44 @@ namespace WebAPI.Controllers
             //Sacuvaj(Registrovani.SviZajedno);
 
             return View("DispecerZatrazioVoznju", v);
+        }
+
+        public ActionResult PromeniLokacijuVozaca()
+        {
+            Vozac v = HttpContext.Application["Vozac"] as Vozac;
+            return View(v);
+        }
+
+        public ActionResult PromeniLokVozac(string x, string y, string ulica, string broj, string grad, string pozivni)
+        {
+            
+            Adresa a = new Adresa(ulica, broj, grad, pozivni);
+
+            Lokacija l = new Lokacija(x, y, a);
+
+            Vozac v = HttpContext.Application["Vozac"] as Vozac;
+
+            v.Lokacija = l;
+
+            foreach (Korisnik kor in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (kor.Korisnicko_ime == v.Korisnicko_ime)
+                {
+                    kor.Korisnicko_ime = v.Korisnicko_ime;
+                    kor.Lozinka = v.Lozinka;
+                    kor.Ime = v.Ime;
+                    kor.Prezime = v.Prezime;
+                    kor.Email = v.Email;
+                    kor.Kontakt_telefon = v.Kontakt_telefon;
+                    kor.Jmbg = v.Jmbg;
+                    kor.Pol = v.Pol;
+                    break;
+                }
+            }
+
+            //Sacuvaj(Registrovani.SviZajedno);
+
+            return View("vozacView", v);
         }
     }
     }

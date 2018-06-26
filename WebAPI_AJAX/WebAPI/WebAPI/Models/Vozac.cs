@@ -43,7 +43,8 @@ namespace WebAPI.Models
             a.Broj = broj;
             a.PostanskiBroj = postanski_broj;
             a.Mesto = mesto;
-            
+            Lokacija l = new Lokacija("2", "2", a);
+            Lokacija = l;
         }
     }
 }
