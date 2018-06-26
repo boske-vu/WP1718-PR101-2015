@@ -7,7 +7,7 @@ namespace WebAPI.Models
 {
     public enum StatusVoznje
     {
-        NaCekanju,
+        KreiranaNaCekanju,
         Formirana,
         Obradjena,
         Prihvacena,

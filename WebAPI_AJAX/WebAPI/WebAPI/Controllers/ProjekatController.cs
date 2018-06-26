@@ -125,8 +125,6 @@ namespace WebAPI.Controllers
                 }
             }
 
-         
-
             return View("vozacView", ret);
         }
 
@@ -158,7 +156,8 @@ namespace WebAPI.Controllers
 
             v.Musterija = m;
 
-            v.StatusVoznje = StatusVoznje.Formirana;
+            v.StatusVoznje = StatusVoznje.KreiranaNaCekanju;
+            /*
             Komentar k = new Komentar("d", DateTime.Now, v, 3);
             Dispecer d = new Dispecer();
             Vozac vozac = new Vozac();
@@ -166,11 +165,12 @@ namespace WebAPI.Controllers
             v.Dispecer = d;
             v.Vozac = vozac;
             v.Iznos = 24;
-            
+            */
             m.listaVoznja.Add(v);
 
-
+            PostojeciKorisnici.ListaSvihVoznji.Add(v);
             
+                //dodajem voznju u listu musterija
                 foreach (Musterija m1 in PostojeciKorisnici.ListaMusterija)
                 {
                     if (m1.Korisnicko_ime.Equals(m.Korisnicko_ime))
@@ -179,6 +179,13 @@ namespace WebAPI.Controllers
                     }
                 }
 
+            foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (k.Korisnicko_ime == m.Korisnicko_ime)
+                {
+                    k.listaVoznja = m.listaVoznja;
+                }
+            }
 
             /*
         string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
@@ -204,7 +211,6 @@ namespace WebAPI.Controllers
         #region dodajVozaca
         public ActionResult DodajVozaca(string ime, string prezime, string pol, string korisnicko_ime, string jmbg, string lozinka, string email, string kontakt_broj, string ulica, string broj, string mesto, string postanski_broj, string godiste, string reg, string taxiBroj, string tip)
         {
-           
             TipAutomobila ti = TipAutomobila.kombi;
 
             switch (tip)
@@ -597,15 +603,15 @@ namespace WebAPI.Controllers
             return View(d);
         }
 
-        public ActionResult ZatrazioDispecer(string ulica, string broj, string mesto, string postanski, string vozilo, string dispecer)
+        public ActionResult ZatrazioDispecer(string ulica, string broj, string mesto, string postanski, string vozilo, string dispecer, string korisnickoVozac)
         {
-       
             Voznja v = new Voznja();
             Adresa a = new Adresa(ulica, broj, mesto, postanski);
             
             Lokacija l = new Lokacija("1", "1", a);
             v.Datum_i_vreme = DateTime.Now;
             v.LokacijaNaKojuTaksiDolazi = l;
+            v.StatusVoznje = StatusVoznje.Formirana;
 
             switch (vozilo)
             {
@@ -618,21 +624,28 @@ namespace WebAPI.Controllers
             }
 
             Vozac vozac = new Vozac();
-            int i = 0;
+           
 
             foreach (Vozac vo in PostojeciKorisnici.ListaVozaca)
             {
-                if (vo.Zauzet == false && vo.Automobil.Tip == v.TipAutomobila)
+               if(vo.Korisnicko_ime == korisnickoVozac)
                 {
-                    vo.Zauzet = true;
                     vozac = vo;
-                    i++;
-                    break;
                 }
             }
 
+            if(v.TipAutomobila != vozac.Automobil.Tip)
+            {
+                return View("GreskaAuto");
+            }
+            else
+            {
+                vozac.Zauzet = true;
+            }
+
+
             v.Vozac = vozac;
-            v.StatusVoznje = StatusVoznje.Formirana;
+            v.StatusVoznje = StatusVoznje.KreiranaNaCekanju;
             v.Musterija = new Musterija("", "", "", "", Pol.Muski,"0", "", "", Uloge.Musterija);
 
             Dispecer disp = new Dispecer();
@@ -647,11 +660,27 @@ namespace WebAPI.Controllers
 
             disp.listaVoznja.Add(v);
 
-            HttpContext.Application["Dispecer"] = disp;
+            foreach(Vozac voza in PostojeciKorisnici.ListaVozaca)
+            {
+                if(voza.Korisnicko_ime == korisnickoVozac)
+                {
+                    voza.listaVoznja.Add(v);
+                    vozac = voza;
+                    break;
+                }
+            }
 
-            //Voznje.SveVoznje.Add(v);
+            foreach(Korisnik k in PostojeciKorisnici.ListaKorisnika)
+            {
+                if(k.Korisnicko_ime == korisnickoVozac)
+                {
+                    k.listaVoznja = vozac.listaVoznja;
+                }
+            }
 
-            //Sacuvaj(Registrovani.SviZajedno);
+            Session["korisnik"] = disp;
+
+            PostojeciKorisnici.ListaSvihVoznji.Add(v);
 
             return View("DispecerZatrazioVoznju", v);
         }

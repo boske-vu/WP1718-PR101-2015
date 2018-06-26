@@ -45,6 +45,7 @@ namespace WebAPI.Models
             a.Mesto = mesto;
             Lokacija l = new Lokacija("2", "2", a);
             Lokacija = l;
+
         }
     }
 }
