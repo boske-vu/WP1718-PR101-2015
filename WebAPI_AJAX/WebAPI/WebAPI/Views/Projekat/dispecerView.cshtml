@@ -10,6 +10,11 @@
     <div style="text-align:center">
         <h2>Dobrodošli @Model.Korisnicko_ime</h2>
     </div>
+    <div style="text-align:right">
+        <form action="/Projekat/OdjaviDispecer">
+            <input type="submit" value="Odjavi se" />
+        </form>
+    </div>
     <div style="text-align:center">
         <table align="center">
             <tr>
@@ -17,7 +22,16 @@
                     <form action="/Projekat/DodajVozacaStart">
                         <input type="submit" value="Dodaj vozaca" />
                     </form>
-                </td>          
+                <td width="50">
+                    <form action="/Projekat/DispecerEdit">
+                        <input type="submit" value="Izmeni podatke" />
+                    </form>
+                </td>
+                <td>
+                    <form action="/Projekat/DispecerZakazujeVoznju">
+                        <input type="submit" value="Zakaži vožnju" />
+                    </form>
+                </td>     
             </tr>
         </table>
     </div>

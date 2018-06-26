@@ -5,17 +5,24 @@ using System.Web;
 
 namespace WebAPI.Models
 {
+    [Serializable]
     public class Vozac : Korisnik
     {
         public Automobil Automobil { get; set; }
         public Lokacija Lokacija { get; set; }
 
-        public Vozac() { }
+        public bool Zauzet { get; set; } = false;
+
+        public Vozac()
+        {
+            listaVoznja = new List<Models.Voznja>();
+        }
 
         public Vozac(Automobil a, Lokacija l)
         {
             a = new Automobil();
             l = new Lokacija();
+            listaVoznja = new List<Models.Voznja>();
         }
 
         public Vozac(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon, string email, Uloge uloga, string ulica, string broj, string mesto, string postanski_broj) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)

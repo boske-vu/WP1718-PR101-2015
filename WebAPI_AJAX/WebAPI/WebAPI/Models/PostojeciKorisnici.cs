@@ -10,7 +10,6 @@ namespace WebAPI.Models
         public static List<Musterija> ListaMusterija { get; set; }
         public static List<Vozac> ListaVozaca { get; set; }
         public static List<Dispecer> ListaDispecera { get; set; }
-
         public static List<Korisnik> ListaKorisnika { get; set; }
         public static List<Voznja> ListaSvihVoznji { get; set; }
 

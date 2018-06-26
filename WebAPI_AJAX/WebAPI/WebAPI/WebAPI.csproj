@@ -238,6 +238,10 @@
     <Content Include="Views\Projekat\VozacDodan.cshtml" />
     <Content Include="Views\Projekat\ZatraziVoznjuMusterija.cshtml" />
     <Content Include="Views\Projekat\ZatrazenaVoznja.cshtml" />
+    <Content Include="Views\Projekat\MusterijaEdit.cshtml" />
+    <Content Include="Views\Projekat\DispecerEdit.cshtml" />
+    <Content Include="Views\Projekat\DispecerZakazujeVoznju.cshtml" />
+    <Content Include="Views\Projekat\DispecerZatrazioVoznju.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

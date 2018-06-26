@@ -5,9 +5,9 @@ using System.Web;
 
 namespace WebAPI.Models
 {
+    [Serializable]
     public class Dispecer: Korisnik
     {
-        public Dispecer() { }
         public Dispecer(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon,
         string email, Uloge uloga) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)
         {
@@ -21,11 +21,12 @@ namespace WebAPI.Models
             Email = email;
             Uloga = uloga;
             Ulogovan = false;
+            listaVoznja = new List<Voznja>();
         }
 
-        public Dispecer(List<Voznja> v)
+        public Dispecer()
         {
-            v = new List<Voznja>();
+            listaVoznja = new List<Voznja>();
             Ulogovan = false;
         }
     }

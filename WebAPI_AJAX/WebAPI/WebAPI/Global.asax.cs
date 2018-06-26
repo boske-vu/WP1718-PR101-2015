@@ -35,7 +35,7 @@ namespace WebAPI
             
             PostojeciKorisnici pk = new PostojeciKorisnici();
 
-            Musterija m = new Musterija("dls", "dfd", "dsfj", "djfi", Pol.Muski, "wfeijf", "sfji", "fdjfij", Uloge.Musterija);
+            Musterija m = new Musterija("d", "d", "dsfj", "djfi", Pol.Muski, "wfeijf", "sfji", "fdjfij", Uloge.Musterija);
             PostojeciKorisnici.ListaKorisnika.Add(m);
             PostojeciKorisnici.ListaMusterija.Add(m);
             

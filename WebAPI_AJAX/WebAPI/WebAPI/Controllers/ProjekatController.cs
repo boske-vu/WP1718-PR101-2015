@@ -34,6 +34,61 @@ namespace WebAPI.Controllers
             return View();
         }
 
+        public ActionResult IzmeniPodatkeMusterija(string ime, string prezime, string pol, string jmbg, string korisnicko, string lozinka, string mail, string broj)
+        {
+            Musterija ret = new Musterija();
+            Pol p = Pol.Muski;
+            switch (pol)
+            {
+                case "muski":
+                    p = Pol.Muski;
+                    break;
+                case "zenski":
+                    p = Pol.Zenski;
+                    break;
+            }
+
+            foreach (Musterija d in PostojeciKorisnici.ListaMusterija)
+            {
+                if (d.Korisnicko_ime == korisnicko)
+                {
+                    d.Ime = ime;
+                    d.Prezime = prezime;
+                    d.Pol = p;
+                    d.Jmbg = jmbg;
+                    d.Lozinka = lozinka;
+                    d.Kontakt_telefon = broj;
+                    d.Email = mail;
+                    ret = d;
+                    break;
+                }
+            }
+            Korisnik korisnik = new Korisnik();
+
+            foreach (Korisnik k in PostojeciKorisnici.ListaMusterija)
+            {
+                if (k.Korisnicko_ime == ret.Korisnicko_ime)
+                {
+                    korisnik = ret;
+                    break;
+                }
+            }
+
+            //Sacuvaj(Registrovani.SviZajedno);
+
+            return View("musterijaWelcome", ret);
+        }
+
+        public ActionResult MusterijaEdit()
+        {
+            Musterija m = HttpContext.Application["Musterija"] as Musterija;
+
+            return View(m);
+        }
+
+        
+
+        #region zatrazenaVoznja
         public ActionResult ZatrazenaVoznja(string ulica, string broj, string mesto, string postanski_broj, string tip_vozila, string x, string y)
         {
             Musterija m = HttpContext.Application["Musterija"] as Musterija;
@@ -63,40 +118,56 @@ namespace WebAPI.Controllers
             
             m.listaVoznja.Add(v);
 
-            string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
-            //XmlSerializer serializer = new XmlSerializer(typeof(Musterija));
-            if (System.IO.File.Exists(path))
-            {
 
-                foreach (Musterija m1 in PostojeciKorisnici.ListaKorisnika)
+            
+                foreach (Musterija m1 in PostojeciKorisnici.ListaMusterija)
                 {
                     if (m1.Korisnicko_ime.Equals(m.Korisnicko_ime))
                     {
                         m1.listaVoznja = m.listaVoznja;
-
-                        XmlDocument xDoc = new XmlDocument();
-                        xDoc.Load(path);
-
-                        var allNodes = xDoc.GetElementsByTagName("Voznja");
-                        var lastNode = allNodes[allNodes.Count - 1];
-                        XmlElement node = SerializeToXmlElement(new Voznja(v.Datum_i_vreme, v.LokacijaNaKojuTaksiDolazi, v.TipAutomobila, v.Musterija, v.Odrediste, v.Dispecer, v.Vozac, v.Iznos, v.Komentar, v.StatusVoznje));
-                        XmlNode importNode = xDoc.ImportNode(node, true);
-                        xDoc.DocumentElement.AppendChild(importNode);
-                        xDoc.Save(path);
                     }
                 }
 
-            }
-            else
-            {
-                Console.WriteLine("Greska jer nema dispecera");
-            }
 
+            /*
+        string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
+        //XmlSerializer serializer = new XmlSerializer(typeof(Musterija));
 
-            return View();
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(path);
+
+            var allNodes = xDoc.GetElementsByTagName("Voznja");
+            var lastNode = allNodes[allNodes.Count - 1];
+            // XmlElement node = SerializeToXmlElement(new Voznja(v.Datum_i_vreme, v.LokacijaNaKojuTaksiDolazi, v.TipAutomobila, m, v.Odrediste, v.Dispecer, v.Vozac, v.Iznos, v.Komentar, v.StatusVoznje));
+            XmlElement node = SerializeToXmlElement(new Voznja(DateTime.Now, l, TipAutomobila.kombi, m2, l, d, vozac, 55, k, StatusVoznje.Formirana));
+
+            XmlNode importNode = xDoc.ImportNode(node, true);
+            xDoc.DocumentElement.AppendChild(importNode);
+            xDoc.Save(path);
+
+        */
+
+            return View("ZatrazenaVoznja", v);
         }
-        public ActionResult DodajVozaca(string ime, string prezime, string pol, string korisnicko_ime, string jmbg, string lozinka, string email, string kontakt_broj, string ulica, string broj, string mesto, string postanski_broj)
+#endregion
+        #region dodajVozaca
+        public ActionResult DodajVozaca(string ime, string prezime, string pol, string korisnicko_ime, string jmbg, string lozinka, string email, string kontakt_broj, string ulica, string broj, string mesto, string postanski_broj, string godiste, string reg, string taxiBroj, string tip)
         {
+            int god = Int32.Parse(godiste);
+            int br = Int32.Parse(taxiBroj);
+            TipAutomobila ti = TipAutomobila.kombi;
+
+            switch (tip)
+            {
+                case "kombi":
+                    ti = TipAutomobila.kombi;
+                    break;
+                case "putnicki":
+                    ti = TipAutomobila.putnickiAutomobil;
+                    break;
+            }
+
+
             Pol p = Pol.Muski;
             if (pol.Equals("muski"))
                 p = Pol.Muski;
@@ -104,6 +175,10 @@ namespace WebAPI.Controllers
                 p = Pol.Zenski;
 
             Vozac v = new Vozac(korisnicko_ime, lozinka, ime, prezime, p, jmbg, kontakt_broj, email, Uloge.Vozac, ulica, broj, mesto, postanski_broj);
+
+            Automobil a = new Automobil(v, god, reg, br, ti);
+
+            v.Automobil = a;
 
             foreach (Vozac v1 in PostojeciKorisnici.ListaVozaca)
             {
@@ -141,7 +216,9 @@ namespace WebAPI.Controllers
 
             return View("VozacDodan");
         }
+#endregion
 
+        #region login
         public ActionResult LogIn(string korisnicko_ime, string password)
         {
             foreach (Musterija m in PostojeciKorisnici.ListaMusterija)
@@ -188,7 +265,9 @@ namespace WebAPI.Controllers
 
             return View("NePostojiKorisnik");
         }
+        #endregion
 
+#region serializeToXMl
         public static XmlElement SerializeToXmlElement(object o)
         {
             XmlDocument doc = new XmlDocument();
@@ -198,7 +277,9 @@ namespace WebAPI.Controllers
             }
             return doc.DocumentElement;
         }
+        #endregion
 
+#region register
         public ActionResult Register(string ime, string prezime, string pol, string korisnicko_ime, string password, string email, string broj_telefona, string jmbg)
         {
             Pol p = Pol.Muski;
@@ -246,6 +327,7 @@ namespace WebAPI.Controllers
             {
                 Console.WriteLine("Greska jer nema dispecera");
             }
+            #region commentWriteToXML 
             /* 
             string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
             if (!System.IO.File.Exists(path))
@@ -345,9 +427,185 @@ namespace WebAPI.Controllers
                 writer.WriteEndDocument();
             }
             */
-
+#endregion
             return View("Registrovani", m);
-            } 
+            }
+        #endregion
+
+
+        public ActionResult DispecerEdit()
+        {
+            Dispecer d = HttpContext.Application["Dispecer"] as Dispecer;
+            return View(d);
         }
+
+
+        
+
+        public ActionResult VratiProfilMusterija()
+        {
+            Musterija m = HttpContext.Application["Musterija"] as Musterija;
+
+            return View("musterijaView", m);
+        }
+
+        public ActionResult VratiProfilDisp()
+        {
+            Dispecer d = HttpContext.Application["Dispecer"] as Dispecer;
+
+            return View("dispecerView", d);
+        }
+
+        public ActionResult OdjaviMusterija()
+        {
+            foreach (Musterija m in PostojeciKorisnici.ListaMusterija)
+            {
+                if (m == HttpContext.Application["Musterija"])
+                {
+                    m.Ulogovan = false;
+                    HttpContext.Application["Musterija"] = null;
+                }
+            }
+            return View("Index");
+        }
+
+        public ActionResult OdjaviDispecer()
+        {
+            foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+            {
+                if (d == HttpContext.Application["Dispecer"])
+                {
+                    d.Ulogovan = false;
+                    HttpContext.Application["Dispecer"] = null;
+                }
+            }
+            return View("Index");
+        }
+
+        public ActionResult OdjaviVozac()
+        {
+            foreach (Vozac v in PostojeciKorisnici.ListaVozaca)
+            {
+                if (v == HttpContext.Application["Vozac"])
+                {
+                    v.Ulogovan = false;
+                    HttpContext.Application["Vozac"] = null;
+                }
+            }
+            return View("Index");
+        }
+
+        public ActionResult IzmeniPodatkeDispecer(string ime, string prezime, string pol, string jmbg, string korisnicko, string lozinka, string mail, string broj)
+        {
+            Dispecer ret = new Dispecer();
+
+            Pol p = Pol.Muski;
+            switch (pol)
+            {
+                case "Muski":
+                    p = Pol.Muski;
+                    break;
+                case "Zenski":
+                    p = Pol.Zenski;
+                    break;
+            }
+
+            foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+            {
+                if (d.Korisnicko_ime == korisnicko)
+                {
+                    d.Ime = ime;
+                    d.Prezime = prezime;
+                    d.Pol = p;
+                    d.Jmbg = jmbg;
+                    d.Lozinka = lozinka;
+                    d.Kontakt_telefon = broj;
+                    d.Email = mail;
+                    ret = d;
+                    break;
+                }
+            }
+
+            Korisnik korisnik = new Korisnik();
+
+            foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (k.Korisnicko_ime == ret.Korisnicko_ime)
+                {
+                    korisnik = ret;
+                    break;
+                }
+            }
+
+          //  Sacuvaj(Registrovani.SviZajedno);
+            return View("dispecerView", ret);
+        }
+
+
+        public ActionResult DispecerZakazujeVoznju()
+        {
+            Dispecer d = HttpContext.Application["Dispecer"] as Dispecer;
+            return View(d);
+        }
+
+        public ActionResult ZatrazioDispecer(string ulica, string broj, string mesto, string postanski, string vozilo, string dispecer)
+        {
+       
+            Voznja v = new Voznja();
+            Adresa a = new Adresa(ulica, broj, mesto, postanski);
+            
+            Lokacija l = new Lokacija("1", "1", a);
+            v.Datum_i_vreme = DateTime.Now;
+            v.LokacijaNaKojuTaksiDolazi = l;
+
+            switch (vozilo)
+            {
+                case "putnicko":
+                    v.TipAutomobila = TipAutomobila.putnickiAutomobil;
+                    break;
+                case "kombi":
+                    v.TipAutomobila = TipAutomobila.kombi;
+                    break;
+            }
+
+            Vozac vozac = new Vozac();
+            int i = 0;
+
+            foreach (Vozac vo in PostojeciKorisnici.ListaVozaca)
+            {
+                if (vo.Zauzet == false && vo.Automobil.Tip == v.TipAutomobila)
+                {
+                    vo.Zauzet = true;
+                    vozac = vo;
+                    i++;
+                    break;
+                }
+            }
+
+            v.Vozac = vozac;
+            v.StatusVoznje = StatusVoznje.Formirana;
+            v.Musterija = new Musterija("", "", "", "", Pol.Muski,"0", "", "", Uloge.Musterija);
+
+            Dispecer disp = new Dispecer();
+            foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+            {
+                if (d.Korisnicko_ime == dispecer)
+                {
+                    disp = d;
+                }
+            }
+            v.Dispecer = disp;
+
+            disp.listaVoznja.Add(v);
+
+            HttpContext.Application["Dispecer"] = disp;
+
+            //Voznje.SveVoznje.Add(v);
+
+            //Sacuvaj(Registrovani.SviZajedno);
+
+            return View("DispecerZatrazioVoznju", v);
+        }
+    }
     }
 
