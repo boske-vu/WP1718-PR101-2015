@@ -16,7 +16,63 @@ namespace WebAPI.Controllers
         // GET: Projekat
         public ActionResult Index()
         {
-            return View();
+            Korisnik k = Session["korisnik"] as Korisnik;
+
+            if (k == null)
+            {
+                k = new Korisnik();
+                Session["korisnik"] = k;
+                return View();
+            }
+            else
+            {
+                foreach (Musterija m in PostojeciKorisnici.ListaMusterija)
+                {
+                    if (m.Korisnicko_ime == k.Korisnicko_ime && m.Lozinka != k.Lozinka)
+                    {
+                        return View("PogresnaSifra");
+                    }
+                    else if (m.Korisnicko_ime == k.Korisnicko_ime && m.Lozinka == k.Lozinka)
+                    {
+                        m.Ulogovan = true;
+
+                        return View("musterijaView", m);
+                    }
+                }
+
+                foreach (Vozac v in PostojeciKorisnici.ListaVozaca)
+                {
+                    if (v.Korisnicko_ime == k.Korisnicko_ime && v.Lozinka != k.Lozinka)
+                    {
+                        return View("PogresnaSifra");
+
+                    }
+                    else if (v.Korisnicko_ime == k.Korisnicko_ime && v.Lozinka == k.Lozinka)
+                    {
+                        v.Ulogovan = true;
+
+                        return View("vozacView", v);
+                    }
+                }
+
+                foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+                {
+                    if (d.Korisnicko_ime == k.Korisnicko_ime && d.Lozinka != k.Lozinka)
+                    {
+                        return View("PogresnaSifra");
+
+                    }
+                    else if (d.Korisnicko_ime == k.Korisnicko_ime && d.Lozinka == k.Lozinka)
+                    {
+                        d.Ulogovan = true;
+
+                        return View("dispecerView", d);
+                    }
+                }
+
+
+                return View("NePostojiKorisnik");
+            }
         }
 
         public ActionResult RegisterStart()
@@ -80,6 +136,7 @@ namespace WebAPI.Controllers
                 }
             }
 
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
             return View("musterijaView", ret);
         }
 
@@ -123,6 +180,7 @@ namespace WebAPI.Controllers
                 }
             }
 
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
             return View("vozacView", ret);
         }
 
@@ -225,7 +283,7 @@ namespace WebAPI.Controllers
                 p = Pol.Muski;
             else
                 p = Pol.Zenski;
-
+            
             Vozac v = new Vozac(korisnicko_ime, lozinka, ime, prezime, p, jmbg, kontakt_broj, email, Uloge.Vozac, ulica, broj, mesto, postanski_broj);
 
             Automobil a = new Automobil(v, godiste, reg, taxiBroj, ti);
@@ -240,6 +298,8 @@ namespace WebAPI.Controllers
                 }
             }
 
+            PostojeciKorisnici.ListaVozaca.Add(v);
+
             foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
             {
                 if (k.Korisnicko_ime == v.Korisnicko_ime)
@@ -248,6 +308,12 @@ namespace WebAPI.Controllers
                 }
             }
 
+
+            PostojeciKorisnici.ListaKorisnika.Add(v);
+
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
+
+            /*
             string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
 
             if (System.IO.File.Exists(path))
@@ -265,14 +331,18 @@ namespace WebAPI.Controllers
 
             PostojeciKorisnici.ListaVozaca.Add(v);
             PostojeciKorisnici.ListaKorisnika.Add(v);
+            */
+            Dispecer d = Session["korisnik"] as Dispecer;
 
             return View("VozacDodan", v);
         }
 #endregion
 
         #region login
+        [HttpPost]
         public ActionResult LogIn(string korisnicko_ime, string password)
         {
+
             foreach (Musterija m in PostojeciKorisnici.ListaMusterija)
             {
                 if (m.Korisnicko_ime == korisnicko_ime && m.Lozinka != password)
@@ -282,7 +352,7 @@ namespace WebAPI.Controllers
                 else if (m.Korisnicko_ime == korisnicko_ime && m.Lozinka == password)
                 {
                     m.Ulogovan = true;
-                    HttpContext.Application["Musterija"] = m;
+                    Session["korisnik"] = m;
                     return View("musterijaView", m);
                 }
             }
@@ -296,7 +366,7 @@ namespace WebAPI.Controllers
                 else if (d.Korisnicko_ime == korisnicko_ime && d.Lozinka == password)
                 {
                     d.Ulogovan = true;
-                    HttpContext.Application["Dispecer"] = d;
+                    Session["korisnik"] = d;
                     return View("dispecerView", d);
                 }
             }
@@ -310,7 +380,7 @@ namespace WebAPI.Controllers
                 else if (v.Korisnicko_ime == korisnicko_ime && v.Lozinka == password)
                 {
                     v.Ulogovan = true;
-                    HttpContext.Application["Vozac"] = v;
+                    Session["korisnik"] = v;
                     return View("VozacView", v);
                 }
             }
@@ -332,6 +402,7 @@ namespace WebAPI.Controllers
         #endregion
 
 #region register
+        [HttpPost]
         public ActionResult Register(string ime, string prezime, string pol, string korisnicko_ime, string password, string email, string broj_telefona, string jmbg)
         {
             Pol p = Pol.Muski;
@@ -361,7 +432,11 @@ namespace WebAPI.Controllers
             PostojeciKorisnici.ListaKorisnika.Add(m);
             PostojeciKorisnici.ListaMusterija.Add(m as Musterija);
 
-            string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
+           // string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
+
+
+            /*
             //XmlSerializer serializer = new XmlSerializer(typeof(Musterija));
             if (System.IO.File.Exists(path))
             {
@@ -480,9 +555,8 @@ namespace WebAPI.Controllers
             }
             */
 #endregion
-            return View("Registrovani", m);
+            return View("Index");
             }
-        #endregion
 
 
         public ActionResult DispecerEdit()
@@ -550,7 +624,7 @@ namespace WebAPI.Controllers
                 }
             }
 
-           // Sacuvaj(Registrovani.SviZajedno);
+           Sacuvaj(PostojeciKorisnici.ListaKorisnika);
 
             return View("musterijaView", must);
         }
@@ -650,7 +724,7 @@ namespace WebAPI.Controllers
                 }
             }
 
-          //  Sacuvaj(Registrovani.SviZajedno);
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
             return View("dispecerView", ret);
         }
 
@@ -740,6 +814,7 @@ namespace WebAPI.Controllers
 
             PostojeciKorisnici.ListaSvihVoznji.Add(v);
 
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
             return View("DispecerZatrazioVoznju", v);
         }
 
@@ -776,7 +851,7 @@ namespace WebAPI.Controllers
                 }
             }
 
-            //Sacuvaj(Registrovani.SviZajedno);
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
 
             return View("vozacView", v);
         }
@@ -1072,7 +1147,8 @@ namespace WebAPI.Controllers
 
                 }
             }
-            
+
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
             return View("UspesnoOtkazanaVoznja", vo);
         }
 
@@ -1295,7 +1371,7 @@ namespace WebAPI.Controllers
 
             foreach (Voznja voznja in pomocna)
             {
-                if (voznja.Datum_i_vreme.ToString() == datum && voznja.Komentar.OcenaVoznje == o && voznja.Iznos == int.Parse(cena))
+                if (voznja.Datum_i_vreme.ToString() == datum && voznja.Komentar.OcenaVoznje == o && voznja.Iznos == cena)
                 {
                     ret.Pretrazene.Add(voznja);
                 }
@@ -1351,9 +1427,293 @@ namespace WebAPI.Controllers
             return View("musterijaView", ret);
         }
 
+        public ActionResult TraziVozaca(string vozacI, string vozacP, string korisnik)
+        {
+            List<Voznja> pomocna = new List<Voznja>();
+            Dispecer ret = new Dispecer();
+            foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+            {
+                if (d.Korisnicko_ime == korisnik)
+                {
+                    ret = d;
+                }
+            }
 
+            ret.TraziVozac = true;
+
+            if (ret.Filter)
+            {
+                pomocna = ret.Filtrirane;
+            }
+            else if (ret.Sortiranje)
+            {
+                pomocna = ret.Sortirane;
+            }
+            else
+            {
+                foreach (Voznja voz in ret.listaVoznja)
+                {
+                    pomocna.Add(voz);
+                }
+            }
+
+            if (vozacI != "" && vozacP != "")
+            {
+                foreach (Voznja v in pomocna)
+                {
+                    if (v.Vozac.Ime == vozacI && v.Vozac.Prezime == vozacP)
+                    {
+                        ret.NadjeniVozaci.Add(v);
+                    }
+                }
+            }
+            else if (vozacP == "" && vozacI != "")
+            {
+                foreach (Voznja v in pomocna)
+                {
+                    if (v.Vozac.Ime == vozacI)
+                    {
+                        ret.NadjeniVozaci.Add(v);
+                    }
+                }
+            }
+            else if (vozacI == "" && vozacP != "")
+            {
+                foreach (Voznja v in pomocna)
+                {
+                    if (v.Vozac.Prezime == vozacP)
+                    {
+                        ret.NadjeniVozaci.Add(v);
+                    }
+                }
+            }
+
+            return View("dispecerView", ret);
+        }
+
+        public ActionResult TraziMusteriju(string musterijaI, string musterijaP, string korisnik)
+        {
+            List<Voznja> pomocna = new List<Voznja>();
+            Dispecer ret = new Dispecer();
+            foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+            {
+                if (d.Korisnicko_ime == korisnik)
+                {
+                    ret = d;
+                }
+            }
+
+            ret.TraziMusteriju = true;
+            if (ret.Filter)
+            {
+                pomocna = ret.Filtrirane;
+            }
+            else if (ret.Sortiranje)
+            {
+                pomocna = ret.Sortirane;
+            }
+            else if (ret.TraziVozac)
+            {
+                pomocna = ret.NadjeniVozaci;
+            }
+            else
+            {
+                foreach (Voznja voz in ret.listaVoznja)
+                {
+                    pomocna.Add(voz);
+                }
+            }
+            if (musterijaI != "" && musterijaP != "")
+            {
+                foreach (Voznja v in pomocna)
+                {
+                    if (v.Musterija.Ime == musterijaI && v.Musterija.Prezime == musterijaP)
+                    {
+                        ret.NadjeniVozaci.Add(v);
+                    }
+                }
+            }
+            else if (musterijaP == "" && musterijaI != "")
+            {
+                foreach (Voznja v in pomocna)
+                {
+                    if (v.Musterija.Ime == musterijaI)
+                    {
+                        ret.NadjeniVozaci.Add(v);
+                    }
+                }
+            }
+            else if (musterijaI == "" && musterijaP != "")
+            {
+                foreach (Voznja v in pomocna)
+                {
+                    if (v.Musterija.Prezime == musterijaP)
+                    {
+                        ret.NadjeniVozaci.Add(v);
+                    }
+                }
+            }
+
+            return View("dispecerView", ret);
+        }
+
+        private void Sacuvaj(List<Korisnik> musterije)
+        {
+            SacuvajLjude(musterije);
+            SacuvajVoznje(PostojeciKorisnici.ListaSvihVoznji);
+        }
+
+        private void SacuvajVoznje(List<Voznja> sveVoznje)
+        {
+            string filename = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\voznje.xml";
+            XmlWriter writer = null;
+            try
+            {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                settings.IndentChars = ("\t");
+                settings.OmitXmlDeclaration = true;
+
+                writer = XmlWriter.Create(filename, settings);
+                writer.WriteStartElement("Voznje");
+
+                foreach (Voznja v in sveVoznje)
+                {
+
+                    if (v.Odrediste == null)
+                    {
+                        Adresa a = new Adresa("Nepoznata","0", "Nepoznato", "0");
+                        Lokacija l = new Lokacija("0", "0", a);
+                        v.Odrediste = l;
+                    }
+                    if (v.Vozac == null)
+                    {
+                        Vozac voz = new Vozac("nema", "nema", "nema", "nema", Pol.Muski, "0000", "nema", "nema", Uloge.Vozac ,"nema", "nema","nema","nema");
+                        v.Vozac = voz;
+                    }
+                    if (v.Dispecer == null)
+                    {
+                        Dispecer d = new Dispecer("nema", "nema", "nema", "nema", Pol.Muski, "0000", "nema", "nema", Uloge.Dispecer);
+                        v.Dispecer = d;
+                    }
+
+                    if (v.Komentar == null)
+                    {
+                        Komentar k = new Komentar("bez opisa", DateTime.MinValue, v, Ocene.neocenjen, v.Vozac);
+                        v.Komentar = k;
+                    }
+                    if (v.Musterija == null)
+                    {
+                        Musterija m = new Musterija("nema", "nema", "nema", "nema", Pol.Muski, "000", "nema", "nema", Uloge.Musterija);
+                        v.Musterija = m;
+                    }
+
+                    string odrediste = v.Odrediste.Adresa.Mesto + "_" + v.Odrediste.Adresa.Broj.ToString() + "," + v.Odrediste.Adresa.Mesto + "_" + v.Odrediste.Adresa.PostanskiBroj.ToString();
+                    string pocetna = v.LokacijaNaKojuTaksiDolazi.Adresa.Mesto + "_" + v.LokacijaNaKojuTaksiDolazi.Adresa.Broj.ToString() + "," + v.LokacijaNaKojuTaksiDolazi.Adresa.Mesto + "_" + v.LokacijaNaKojuTaksiDolazi.Adresa.PostanskiBroj.ToString();
+
+                    writer.WriteStartElement("Voznja");
+                    writer.WriteElementString("DatumPorudzbine", v.Datum_i_vreme.ToString());
+                    writer.WriteElementString("LokacijaNaKojuTaksiDolazi", pocetna);
+                    writer.WriteElementString("KrajnjaLokacija", odrediste);
+                    writer.WriteElementString("TipVozila", v.TipAutomobila.ToString());
+                    writer.WriteElementString("MusterijaIme", v.Musterija.Ime);
+                    writer.WriteElementString("MusterijaPrezime", v.Musterija.Prezime);
+                    writer.WriteElementString("VozacIme", v.Vozac.Ime);
+                    writer.WriteElementString("VozacPrezime", v.Vozac.Prezime);
+                    writer.WriteElementString("DispecerIme", v.Dispecer.Ime);
+                    writer.WriteElementString("DispececrPrezime", v.Dispecer.Prezime);
+                    writer.WriteElementString("Status", v.StatusVoznje.ToString());
+                    writer.WriteElementString("KomentarOpis", v.Komentar.Opis);
+                    writer.WriteElementString("KomentarDatum", v.Komentar.DatumObjave.ToString());
+                    writer.WriteElementString("KomentarOcena", v.Komentar.OcenaVoznje.ToString());
+                    writer.WriteElementString("Iznos", v.Iznos.ToString());
+                    writer.WriteEndElement();
+                }
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                }
+            }
+        }
+
+        private void SacuvajLjude(List<Korisnik> korisnici)
+        {
+            string filename = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\korisnici.xml";
+            XmlWriter writer = null;
+            try
+            {
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.Indent = true;
+                settings.IndentChars = ("\t");
+                settings.OmitXmlDeclaration = true;
+
+                writer = XmlWriter.Create(filename, settings);
+                writer.WriteStartElement("Ulogovani");
+                foreach (Korisnik m in korisnici)
+                {
+                    if (m.Uloga == Uloge.Vozac)
+                    {
+                        foreach (Vozac vo in PostojeciKorisnici.ListaVozaca)
+                        {
+                            if (vo.Korisnicko_ime == m.Korisnicko_ime)
+                            {
+                                writer.WriteStartElement("Korisnik");
+                                writer.WriteElementString("Ime", vo.Ime);
+                                writer.WriteElementString("Prezime", vo.Prezime);
+                                writer.WriteElementString("Jmbg", vo.Jmbg.ToString());
+                                writer.WriteElementString("KorisnickoIme", vo.Korisnicko_ime);
+                                writer.WriteElementString("Lozinka", vo.Lozinka);
+                                writer.WriteElementString("Pol", vo.Pol.ToString());
+                                writer.WriteElementString("E-Mail", vo.Email);
+                                writer.WriteElementString("BrojTelefona", vo.Kontakt_telefon);
+                                writer.WriteElementString("Uloga", vo.Uloga.ToString());
+                                writer.WriteStartElement("Automobil");
+                                writer.WriteElementString("Godiste", vo.Automobil.GodisteAutomobila.ToString());
+                                writer.WriteElementString("Registracija", vo.Automobil.BrojRegistarskeOznake.ToString());
+                                writer.WriteElementString("TaxiBroj", vo.Automobil.BrojTaksiVozila.ToString());
+                                writer.WriteElementString("TipVozila", vo.Automobil.Tip.ToString());
+                                writer.WriteEndElement();
+                                writer.WriteStartElement("Adresa");
+                                writer.WriteElementString("NazivUlice", vo.Lokacija.Adresa.Ulica);
+                                writer.WriteElementString("BrojUlice", vo.Lokacija.Adresa.Broj.ToString());
+                                writer.WriteElementString("Grad", vo.Lokacija.Adresa.Mesto);
+                                writer.WriteElementString("PostanskiBroj", vo.Lokacija.Adresa.PostanskiBroj.ToString());
+                                writer.WriteElementString("X", vo.Lokacija.KoordinataX.ToString());
+                                writer.WriteElementString("Y", vo.Lokacija.KoordinataY.ToString());
+                                writer.WriteEndElement();
+                                writer.WriteEndElement();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        writer.WriteStartElement("Korisnik");
+                        writer.WriteElementString("Ime", m.Ime);
+                        writer.WriteElementString("Prezime", m.Prezime);
+                        writer.WriteElementString("Jmbg", m.Jmbg.ToString());
+                        writer.WriteElementString("KorisnickoIme", m.Korisnicko_ime);
+                        writer.WriteElementString("Lozinka", m.Lozinka);
+                        writer.WriteElementString("Pol", m.Pol.ToString());
+                        writer.WriteElementString("E-Mail", m.Email);
+                        writer.WriteElementString("BrojTelefona", m.Kontakt_telefon);
+                        writer.WriteElementString("Uloga", m.Uloga.ToString());
+                        writer.WriteEndElement();
+                    }
+                }
+            }
+            finally
+            {
+                if (writer != null)
+                {
+                    writer.Close();
+                }
+            }
+
+        }
     }
-
 
 }
 
