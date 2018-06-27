@@ -23,6 +23,9 @@ namespace WebAPI.Models
             a = new Automobil();
             l = new Lokacija();
             listaVoznja = new List<Models.Voznja>();
+            Filtrirane = new List<Voznja>();
+            Sortirane = new List<Voznja>();
+            Pretrazene = new List<Voznja>();
         }
 
         public Vozac(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon, string email, Uloge uloga, string ulica, string broj, string mesto, string postanski_broj) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)
@@ -45,6 +48,10 @@ namespace WebAPI.Models
             a.Mesto = mesto;
             Lokacija l = new Lokacija("2", "2", a);
             Lokacija = l;
+
+            Filtrirane = new List<Voznja>();
+            Sortirane = new List<Voznja>();
+            Pretrazene = new List<Voznja>();
 
         }
     }

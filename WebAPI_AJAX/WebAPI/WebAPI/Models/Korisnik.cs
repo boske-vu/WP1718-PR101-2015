@@ -20,7 +20,15 @@ namespace WebAPI.Models
         public List<Voznja> listaVoznja { get; set; }
         public bool Ulogovan { get; set; }
 
-       
+        public bool Filter { get; set; } = false;
+        public bool Sortiranje { get; set; } = false;
+        public bool Pretrazivanje { get; set; } = false;
+
+        public List<Voznja> Filtrirane { get; set; }
+        public List<Voznja> Sortirane { get; set; }
+        public List<Voznja> Pretrazene { get; set; }
+
+
 
         public Korisnik(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon,
         string email, Uloge uloga)
@@ -35,12 +43,18 @@ namespace WebAPI.Models
             Email = email;
             Uloga = uloga;
             Ulogovan = false;
+            Filtrirane = new List<Voznja>();
+            Sortirane = new List<Voznja>();
+            Pretrazene = new List<Voznja>();
         }
 
         public Korisnik()
         {
             listaVoznja = new List<Voznja>();
             Ulogovan = false;
+            Filtrirane = new List<Voznja>();
+            Sortirane = new List<Voznja>();
+            Pretrazene = new List<Voznja>();
         }
 
 

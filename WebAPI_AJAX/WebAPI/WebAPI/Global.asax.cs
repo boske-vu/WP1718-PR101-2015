@@ -36,10 +36,21 @@ namespace WebAPI
             PostojeciKorisnici pk = new PostojeciKorisnici();
 
             Musterija m = new Musterija("d", "d", "dsfj", "djfi", Pol.Muski, "wfeijf", "sfji", "fdjfij", Uloge.Musterija);
+            Vozac v = new Vozac("bole", "1", "df", "df", Pol.Muski, "tr", "df", "df", Uloge.Vozac, "df", "3", "vukovar", "2134");
+            Automobil a = new Automobil(v, "1993", "veio2", "332", TipAutomobila.kombi);
+
+            Adresa ad = new Adresa("sajmiste", "34", "vukovar", "32000");
+            Lokacija l = new Lokacija("43", "43", ad);
+
+            v.Lokacija = l;
+            v.Automobil = a;
+
             PostojeciKorisnici.ListaKorisnika.Add(m);
             PostojeciKorisnici.ListaMusterija.Add(m);
-            
-            if(PostojeciKorisnici.ListaDispecera.Count() == 0)
+            PostojeciKorisnici.ListaKorisnika.Add(v);
+            PostojeciKorisnici.ListaVozaca.Add(v);
+
+            if (PostojeciKorisnici.ListaDispecera.Count() == 0)
             {
                 string line;
                 // Read the file and display it line by line.  

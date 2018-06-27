@@ -11,15 +11,16 @@ namespace WebAPI.Models
      public string Opis { get; set; }
      public DateTime DatumObjave { get; set; }
      public Voznja Voznja { get; set; }
-     public int OcenaVoznje { get; set; }
-
+     public Ocene OcenaVoznje { get; set; }
+        public Korisnik Korisnik { get; set; }
         public Komentar() { }
-        public Komentar(string opis, DateTime datumObjave, Voznja voznja, int ocenaVoznje)
+        public Komentar(string opis, DateTime datumObjave, Voznja voznja, Ocene ocenaVoznje, Korisnik k)
         {
             Opis = opis;
             DatumObjave = datumObjave;
             Voznja = voznja;
             OcenaVoznje = ocenaVoznje;
+            Korisnik = k;
         }
     }
 }

@@ -80,9 +80,7 @@ namespace WebAPI.Controllers
                 }
             }
 
-            //Sacuvaj(Registrovani.SviZajedno);
-
-            return View("musterijaWelcome", ret);
+            return View("musterijaView", ret);
         }
 
         public ActionResult IzmeniPodatkeVozac(string ime, string prezime, string pol, string jmbg, string korisnicko, string lozinka, string mail, string broj)
@@ -135,7 +133,6 @@ namespace WebAPI.Controllers
             return View(m);
         }
 
-        
 
         #region zatrazenaVoznja
         public ActionResult ZatrazenaVoznja(string ulica, string broj, string mesto, string postanski_broj, string tip_vozila, string x, string y)
@@ -495,7 +492,68 @@ namespace WebAPI.Controllers
         }
 
 
-        
+        public ActionResult OstaviKomentar(string komentar, string ocena, string korisnicko, string datum)
+        {
+            Musterija must = new Musterija();
+            Komentar k = new Komentar();
+            k.DatumObjave = DateTime.Now;
+            switch (ocena)
+            {
+                case "Neocenjen":
+                    k.OcenaVoznje = Ocene.veomaLose;
+                    break;
+                case "Veoma loša":
+                    k.OcenaVoznje = Ocene.veomaLose;
+                    break;
+                case "Loša":
+                    k.OcenaVoznje = Ocene.lose;
+                    break;
+                case "Dobra":
+                    k.OcenaVoznje = Ocene.dobro;
+                    break;
+                case "Veoma Dobra":
+                    k.OcenaVoznje = Ocene.veomaDobro;
+                    break;
+                case "Odlična":
+                    k.OcenaVoznje = Ocene.odlicno;
+                    break;
+            }
+
+            k.Opis = komentar.Trim();
+
+            foreach (Voznja v in PostojeciKorisnici.ListaSvihVoznji)
+            {
+                if (v.Datum_i_vreme.ToString() == datum && v.Musterija.Korisnicko_ime == korisnicko)
+                {
+                    k.Voznja = v;
+                    k.Korisnik = v.Musterija;
+                    k.Voznja.Komentar = k;
+                }
+            }
+
+            foreach (Musterija m in PostojeciKorisnici.ListaMusterija)
+            {
+                if (m.Korisnicko_ime == korisnicko)
+                {
+                    k.Korisnik = m;
+                    must = m;
+
+                }
+            }
+
+
+            foreach (Korisnik kor in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (kor.Korisnicko_ime == korisnicko)
+                {
+                    kor.listaVoznja = k.Korisnik.listaVoznja;
+                }
+            }
+
+           // Sacuvaj(Registrovani.SviZajedno);
+
+            return View("musterijaView", must);
+        }
 
         public ActionResult VratiProfilMusterija()
         {
@@ -722,6 +780,580 @@ namespace WebAPI.Controllers
 
             return View("vozacView", v);
         }
+
+        public ActionResult FiltriraMusterija(string filterStatus, string musterija)
+        {
+            Korisnik ret = new Korisnik();
+            foreach (Korisnik must in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (must.Korisnicko_ime == musterija)
+                {
+                    ret = must;
+                }
+            }
+            ret.Filter = true;
+
+            StatusVoznje status = StatusVoznje.Formirana;
+
+            switch (filterStatus)
+            {
+                case "Formirana":
+                    status = StatusVoznje.Formirana;
+                    break;
+                case "Kreirana":
+                    status = StatusVoznje.KreiranaNaCekanju;
+                    break;
+                case "Neuspešna":
+                    status = StatusVoznje.Neuspesna;
+                    break;
+                case "Uspešna":
+                    status = StatusVoznje.Uspesna;
+                    break;
+                case "Prihvaćena":
+                    status = StatusVoznje.Prihvacena;
+                    break;
+                case "Otkazana":
+                    status = StatusVoznje.Otkazana;
+                    break;
+                case "Obrađena":
+                    status = StatusVoznje.Obradjena;
+                    break;
+            }
+
+            foreach (Voznja voz in ret.listaVoznja)
+            {
+                if (voz.StatusVoznje == status)
+                {
+                    ret.Filtrirane.Add(voz);
+                }
+            }
+            Dispecer d = new Dispecer();
+            Musterija m = new Musterija();
+            Vozac v = new Vozac();
+            if (ret.Uloga == Uloge.Musterija)
+            {
+                foreach (Musterija mu in PostojeciKorisnici.ListaMusterija)
+                {
+                    if (mu.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        mu.Filtrirane = ret.Filtrirane;
+                        mu.Sortirane = ret.Sortirane;
+                        mu.Pretrazene = ret.Pretrazene;
+                        m = mu;
+                        return View("musterijaView", m);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Dispecer)
+            {
+                foreach (Dispecer di in PostojeciKorisnici.ListaDispecera)
+                {
+                    if (di.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        di.Filtrirane = ret.Filtrirane;
+                        di.Sortirane = ret.Sortirane;
+                        di.Pretrazene = ret.Pretrazene;
+                        d = di;
+                        return View("dispecerView", d);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Vozac)
+            {
+                foreach (Vozac vo in PostojeciKorisnici.ListaVozaca)
+                {
+                    if (vo.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        vo.Filtrirane = ret.Filtrirane;
+                        vo.Sortirane = ret.Sortirane;
+                        vo.Pretrazene = ret.Pretrazene;
+                        v = vo;
+                        return View("vozacView", vo);
+                    }
+                }
+            }
+
+            return View("musterijaView", ret);
+        }
+
+        public ActionResult SortirajMusteriju(string datum, string ocena, string musterija)
+        {
+            Korisnik ret = new Korisnik();
+            foreach (Korisnik must in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (must.Korisnicko_ime == musterija)
+                {
+                    ret = must;
+                }
+            }
+
+            ret.Sortiranje = true;
+
+            if (ret.Filter)
+            {
+                ret.Sortirane = ret.Filtrirane;
+            }
+            else if (ret.Pretrazivanje)
+            {
+                ret.Sortirane = ret.Pretrazene;
+            }
+            else
+            {
+                foreach (Voznja voz in ret.listaVoznja)
+                {
+                    ret.Sortirane.Add(voz);
+                }
+            }
+
+            bool dat = false;
+            bool oc = false;
+
+            if (datum != null)
+            {
+                dat = true;
+            }
+
+            if (ocena != null)
+            {
+                oc = true;
+            }
+
+            if (dat)
+            {
+                ret.Sortirane = ret.listaVoznja.OrderBy(o => o.Datum_i_vreme).ToList();
+            }
+            else if (oc)
+            {
+                ret.Sortirane = ret.listaVoznja.OrderBy(o => o.Komentar.OcenaVoznje).ToList();
+            }
+
+            Dispecer d = new Dispecer();
+            Musterija m = new Musterija();
+            Vozac v = new Vozac();
+            if (ret.Uloga == Uloge.Musterija)
+            {
+                foreach (Musterija mu in PostojeciKorisnici.ListaMusterija)
+                {
+                    if (mu.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        mu.Filtrirane = ret.Filtrirane;
+                        mu.Sortirane = ret.Sortirane;
+                        mu.Pretrazene = ret.Pretrazene;
+                        m = mu;
+                        return View("musterijaView", m);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Dispecer)
+            {
+                foreach (Dispecer di in PostojeciKorisnici.ListaDispecera)
+                {
+                    if (di.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        di.Filtrirane = ret.Filtrirane;
+                        di.Sortirane = ret.Sortirane;
+                        di.Pretrazene = ret.Pretrazene;
+                        d = di;
+                        return View("dispecerView", d);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Vozac)
+            {
+                foreach (Vozac vo in PostojeciKorisnici.ListaVozaca)
+                {
+                    if (vo.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        vo.Filtrirane = ret.Filtrirane;
+                        vo.Sortirane = ret.Sortirane;
+                        vo.Pretrazene = ret.Pretrazene;
+                        v = vo;
+                        return View("vozacView", vo);
+                    }
+                }
+            }
+
+            return View("musterijaView", ret);
+        }
+
+        public ActionResult UspesnoOtkazanaVoznja(string korisnik, string datum)
+        {
+            Voznja v = new Voznja();
+
+            foreach (Voznja voznja in PostojeciKorisnici.ListaSvihVoznji)
+            {
+                if (voznja.Datum_i_vreme.ToString() == datum && voznja.Musterija.Korisnicko_ime == korisnik)
+                {
+                    v = voznja;
+                    break;
+                }
+            }
+            return View("UspesnoOtkazanaVoznja", v);
+        }
+
+        public ActionResult OtkazujeMusterija(string korisnik, string datum)
+        {
+            string[] dat = datum.Split(' ', '-', ':');
+
+            int day = int.Parse(dat[0]);
+            int month = 0;
+            switch (dat[1])
+            {
+                case "Jan":
+                    month = 1;
+                    break;
+                case "Feb":
+                    month = 2;
+                    break;
+                case "Mar":
+                    month = 3;
+                    break;
+                case "Apr":
+                    month = 4;
+                    break;
+                case "May":
+                    month = 5;
+                    break;
+                case "Jun":
+                    month = 6;
+                    break;
+                case "Jul":
+                    month = 7;
+                    break;
+                case "Aug":
+                    month = 8;
+                    break;
+                case "Sep":
+                    month = 9;
+                    break;
+                case "Oct":
+                    month = 10;
+                    break;
+                case "Nov":
+                    month = 11;
+                    break;
+                case "Dec":
+                    month = 12;
+                    break;
+            }
+
+            int year = int.Parse(dat[2]);
+            year = year + 2000;
+            int hour = int.Parse(dat[3]);
+            int minute = int.Parse(dat[4]);
+            int second = int.Parse(dat[5]);
+
+            DateTime d = new DateTime(year, month, day, hour, minute, second);
+
+            Voznja vo = new Voznja();
+
+            foreach (Voznja v in PostojeciKorisnici.ListaSvihVoznji)
+            {
+                if (v.Datum_i_vreme.Date == d.Date && v.Datum_i_vreme.Day == d.Day && v.Datum_i_vreme.Year == d.Year && v.Datum_i_vreme.Hour == d.Hour && v.Datum_i_vreme.Minute == d.Minute && v.Datum_i_vreme.Second == d.Second && v.Musterija.Korisnicko_ime == korisnik)
+                {
+                    v.StatusVoznje = StatusVoznje.Otkazana;
+                    vo = v;
+                }
+            }
+            Musterija musterija = new Musterija();
+            foreach (Musterija m in PostojeciKorisnici.ListaMusterija)
+            {
+                if (m.Korisnicko_ime == korisnik)
+                {
+                    foreach (Voznja v in m.listaVoznja)
+                    {
+                        if (v.Datum_i_vreme.Date == d.Date && v.Datum_i_vreme.Day == d.Day && v.Datum_i_vreme.Year == d.Year && v.Datum_i_vreme.Hour == d.Hour && v.Datum_i_vreme.Minute == d.Minute && v.Datum_i_vreme.Second == d.Second)
+                        {
+                            v.StatusVoznje = StatusVoznje.Otkazana;
+                            musterija = m;
+                            break;
+                        }
+                    }
+
+                }
+            }
+            
+            return View("UspesnoOtkazanaVoznja", vo);
+        }
+
+        public ActionResult IzmeniVoznjuMusterija(string korisnik, string datum)
+        {
+            string[] dat = datum.Split(' ', '-', ':');
+
+            int day = int.Parse(dat[0]);
+            int month = 0;
+            switch (dat[1])
+            {
+                case "Jan":
+                    month = 1;
+                    break;
+                case "Feb":
+                    month = 2;
+                    break;
+                case "Mar":
+                    month = 3;
+                    break;
+                case "Apr":
+                    month = 4;
+                    break;
+                case "May":
+                    month = 5;
+                    break;
+                case "Jun":
+                    month = 6;
+                    break;
+                case "Jul":
+                    month = 7;
+                    break;
+                case "Aug":
+                    month = 8;
+                    break;
+                case "Sep":
+                    month = 9;
+                    break;
+                case "Oct":
+                    month = 10;
+                    break;
+                case "Nov":
+                    month = 11;
+                    break;
+                case "Dec":
+                    month = 12;
+                    break;
+            }
+
+            int year = int.Parse(dat[2]);
+            year = year + 2000;
+            int hour = int.Parse(dat[3]);
+            int minute = int.Parse(dat[4]);
+            int second = int.Parse(dat[5]);
+
+            DateTime d = new DateTime(year, month, day, hour, minute, second);
+
+            Voznja vo = new Voznja();
+
+            foreach (Voznja v in PostojeciKorisnici.ListaSvihVoznji)
+            {
+                if (v.Datum_i_vreme.Date == d.Date && v.Datum_i_vreme.Day == d.Day && v.Datum_i_vreme.Year == d.Year && v.Datum_i_vreme.Hour == d.Hour && v.Datum_i_vreme.Minute == d.Minute && v.Datum_i_vreme.Second == d.Second && v.Musterija.Korisnicko_ime == korisnik)
+                {
+                    vo = v;
+                    break;
+                }
+            }
+            return View("IzmenaVoznjeMusterija", vo);
+        }
+
+        public ActionResult PrikaziKomentar(string datum, string korisnik, string vozac, string dispecer)
+        {
+
+            Voznja ret = new Voznja();
+            foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
+            {
+                foreach (Voznja v in k.listaVoznja)
+                {
+                    if (v.Datum_i_vreme.ToString() == datum && k.Korisnicko_ime == korisnik && vozac == v.Vozac.Korisnicko_ime && dispecer == v.Dispecer.Korisnicko_ime)
+                    {
+                        ret = v;
+                        break;
+                    }
+                }
+            }
+            return View("PrikazKomentara", ret);
+        }
+
+        public ActionResult PonistiFilter(string musterija)
+        {
+            Korisnik ret = new Korisnik();
+            foreach (Korisnik must in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (must.Korisnicko_ime == musterija)
+                {
+                    ret = must;
+                }
+            }
+
+            ret.Filter = false;
+            ret.Sortiranje = false;
+            ret.Pretrazivanje = false;
+
+            ret.Filtrirane = new List<Voznja>();
+            ret.Sortirane = new List<Voznja>();
+            ret.Pretrazene = new List<Voznja>();
+
+            Dispecer d = new Dispecer();
+            Musterija m = new Musterija();
+            Vozac v = new Vozac();
+            if (ret.Uloga == Uloge.Musterija)
+            {
+                foreach (Musterija mu in PostojeciKorisnici.ListaMusterija)
+                {
+                    if (mu.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        mu.Filtrirane = ret.Filtrirane;
+                        mu.Sortirane = ret.Sortirane;
+                        mu.Pretrazene = ret.Pretrazene;
+                        m = mu;
+                        return View("musterijaView", m);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Dispecer)
+            {
+                foreach (Dispecer di in PostojeciKorisnici.ListaDispecera)
+                {
+                    if (di.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        di.Filtrirane = ret.Filtrirane;
+                        di.Sortirane = ret.Sortirane;
+                        di.Pretrazene = ret.Pretrazene;
+                        di.TraziVozac = false;
+                        di.TraziMusteriju = false;
+                        di.NadjeneMusterije = new List<Voznja>();
+                        di.NadjeniVozaci = new List<Voznja>();
+                        d = di;
+                        return View("dispecerView", d);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Vozac)
+            {
+                foreach (Vozac vo in PostojeciKorisnici.ListaVozaca)
+                {
+                    if (vo.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        vo.Filtrirane = ret.Filtrirane;
+                        vo.Sortirane = ret.Sortirane;
+                        vo.Pretrazene = ret.Pretrazene;
+                        v = vo;
+                        return View("vozacView", vo);
+                    }
+                }
+            }
+
+            return View("musterijaView", ret);
+        }
+
+        public ActionResult TraziMusterija(string datum, string ocena, string cena, string musterija)
+        {
+            if (datum == null || ocena == null || cena == null)
+            {
+                return View("GreskaTrazenje");
+            }
+
+            Ocene o = Ocene.neocenjen;
+
+            switch (ocena)
+            {
+                case "Neocenjen":
+                    o = Ocene.neocenjen;
+                    break;
+                case "Veoma loša":
+                    o = Ocene.veomaLose;
+                    break;
+                case "Loša":
+                    o = Ocene.lose;
+                    break;
+                case "Dobra":
+                    o = Ocene.dobro;
+                    break;
+                case "Veoma dobra":
+                    o = Ocene.veomaDobro;
+                    break;
+                case "Odlična":
+                    o = Ocene.odlicno;
+                    break;
+            }
+
+            List<Voznja> pomocna = new List<Voznja>();
+
+            Korisnik ret = new Korisnik();
+            foreach (Korisnik must in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (must.Korisnicko_ime == musterija)
+                {
+                    ret = must;
+                }
+            }
+
+            ret.Pretrazivanje = true;
+
+            if (ret.Filter)
+            {
+                pomocna = ret.Filtrirane;
+            }
+            else if (ret.Sortiranje)
+            {
+                pomocna = ret.Sortirane;
+            }
+            else
+            {
+                foreach (Voznja voz in ret.listaVoznja)
+                {
+                    pomocna.Add(voz);
+                }
+            }
+
+            foreach (Voznja voznja in pomocna)
+            {
+                if (voznja.Datum_i_vreme.ToString() == datum && voznja.Komentar.OcenaVoznje == o && voznja.Iznos == int.Parse(cena))
+                {
+                    ret.Pretrazene.Add(voznja);
+                }
+            }
+
+            Dispecer d = new Dispecer();
+            Musterija m = new Musterija();
+            Vozac v = new Vozac();
+            if (ret.Uloga == Uloge.Musterija)
+            {
+                foreach (Musterija mu in PostojeciKorisnici.ListaMusterija)
+                {
+                    if (mu.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        mu.Filtrirane = ret.Filtrirane;
+                        mu.Sortirane = ret.Sortirane;
+                        mu.Pretrazene = ret.Pretrazene;
+                        m = mu;
+                        return View("musterijaView", m);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Dispecer)
+            {
+                foreach (Dispecer di in PostojeciKorisnici.ListaDispecera)
+                {
+                    if (di.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        di.Filtrirane = ret.Filtrirane;
+                        di.Sortirane = ret.Sortirane;
+                        di.Pretrazene = ret.Pretrazene;
+                        d = di;
+                        return View("dispecerView", d);
+                    }
+                }
+            }
+            else if (ret.Uloga == Uloge.Vozac)
+            {
+                foreach (Vozac vo in PostojeciKorisnici.ListaVozaca)
+                {
+                    if (vo.Korisnicko_ime == ret.Korisnicko_ime)
+                    {
+                        vo.Filtrirane = ret.Filtrirane;
+                        vo.Sortirane = ret.Sortirane;
+                        vo.Pretrazene = ret.Pretrazene;
+                        v = vo;
+                        return View("vozacView", vo);
+                    }
+                }
+            }
+
+
+            return View("musterijaView", ret);
+        }
+
+
     }
-    }
+
+
+}
 

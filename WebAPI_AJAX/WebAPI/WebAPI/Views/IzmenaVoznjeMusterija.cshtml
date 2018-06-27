@@ -1,0 +1,56 @@
+﻿@model WebAPI.Models.Voznja
+@{
+    ViewBag.Title = "IzmenaVoznjeMusterija";
+}
+
+<html>
+<body style="background-color:skyblue">
+    <div style="text-align:center">
+        <h2><b>Izmena vožnje</b></h2>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <form action="/Projekat/IzmenilaMusterija">
+        <table>
+            <tr>
+                <td><b>Vaša lokacija(ulica,broj,mesto,postanški broj)</b></td>
+                <td><input type="text" name="ulica" value="@Model.LokacijaNaKojuTaksiDolazi.Adresa.Ulica" /></td>
+                <td><input type="text" name="broj" value="@Model.LokacijaNaKojuTaksiDolazi.Adresa.Broj" /></td>
+                <td><input type="text" name="mesto" value="@Model.LokacijaNaKojuTaksiDolazi.Adresa.Mesto" /></td>
+                <td><input type="text" name="postanski" value="@Model.LokacijaNaKojuTaksiDolazi.Adresa.PostanskiBroj" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        Odaberite tip vozila:
+                    </b>
+                </td>
+                <td>
+                    <select name="vozilo">
+                        @if (Model.TipAutomobila == WebAPI.Models.TipAutomobila.kombi)
+                        {
+                            <option value="putnicko">Putničko</option>
+                            <option selected value="kombi">Kombi</option>
+                        }
+                        else
+                        {
+                            <option selected value="putnicko">Putničko</option>
+                            <option value="kombi">Kombi</option>
+                        }
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="hidden" name="korisnicko" value="@Model.Musterija.Korisnicko_ime" />
+                    <input type="hidden" name="datum" value="@Model.Datum_i_vreme" />
+                    <input type="submit" value="Izmeni vožnju" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

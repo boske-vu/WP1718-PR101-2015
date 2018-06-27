@@ -1188,4 +1188,592 @@
     </Lokacija>
     <Zauzet>false</Zauzet>
   </Vozac>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Vozac xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>miki</Korisnicko_ime>
+    <Lozinka>m</Lozinka>
+    <Ime>mirko</Ime>
+    <Prezime>filipovic</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>m</Jmbg>
+    <Kontakt_telefon />
+    <Email />
+    <Uloga>Vozac</Uloga>
+    <listaVoznja />
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+    <Lokacija>
+      <KoordinataX>2</KoordinataX>
+      <KoordinataY>2</KoordinataY>
+      <Adresa>
+        <Ulica />
+        <Broj />
+        <Mesto />
+        <PostanskiBroj />
+      </Adresa>
+    </Lokacija>
+    <Zauzet>false</Zauzet>
+  </Vozac>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>d</Korisnicko_ime>
+    <Lozinka>d</Lozinka>
+    <Ime>dsfj</Ime>
+    <Prezime>djfi</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>sfji</Jmbg>
+    <Kontakt_telefon>fdjfij</Kontakt_telefon>
+    <Email>wfeijf</Email>
+    <Uloga>Musterija</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
+  <Korisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Korisnicko_ime>bole</Korisnicko_ime>
+    <Lozinka>1</Lozinka>
+    <Ime>df</Ime>
+    <Prezime>df</Prezime>
+    <Pol>Muski</Pol>
+    <Jmbg>df</Jmbg>
+    <Kontakt_telefon>df</Kontakt_telefon>
+    <Email>tr</Email>
+    <Uloga>Vozac</Uloga>
+    <Ulogovan>false</Ulogovan>
+    <Filter>false</Filter>
+    <Sortiranje>false</Sortiranje>
+    <Pretrazivanje>false</Pretrazivanje>
+    <Filtrirane />
+    <Sortirane />
+    <Pretrazene />
+  </Korisnik>
 </Korisnici>

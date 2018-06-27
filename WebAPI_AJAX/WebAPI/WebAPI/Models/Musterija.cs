@@ -12,8 +12,6 @@ namespace WebAPI.Models
         public Musterija(string korisnicko_ime, string lozinka, string ime, string prezime, Pol pol, string jmbg, string kontakt_telefon,
        string email, Uloge uloga) : base(korisnicko_ime, lozinka, ime, prezime, pol, jmbg, kontakt_telefon, email, uloga)
         {
-           // Configuration.ProxyCreationEnabled = false;
-
             Korisnicko_ime = korisnicko_ime;
             Lozinka = lozinka;
             Ime = ime;
@@ -25,12 +23,18 @@ namespace WebAPI.Models
             Uloga = uloga;
             Ulogovan = false;
             listaVoznja = new List<Voznja>();
+            Filtrirane = new List<Voznja>();
+            Sortirane = new List<Voznja>();
+            Pretrazene = new List<Voznja>();
         }
 
         public Musterija()
         {
             listaVoznja = new List<Voznja>();
             Ulogovan = false;
+            Filtrirane = new List<Voznja>();
+            Sortirane = new List<Voznja>();
+            Pretrazene = new List<Voznja>();
         }
 
     }

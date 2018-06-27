@@ -169,6 +169,7 @@
     <Compile Include="Models\Korisnik.cs" />
     <Compile Include="Models\Lokacija.cs" />
     <Compile Include="Models\Musterija.cs" />
+    <Compile Include="Models\Ocene.cs" />
     <Compile Include="Models\Pol.cs" />
     <Compile Include="Models\PostojeciKorisnici.cs" />
     <Compile Include="Models\StatusVoznje.cs" />
@@ -245,6 +246,9 @@
     <Content Include="Views\Projekat\PromeniLokacijuVozaca.cshtml" />
     <Content Include="Views\Projekat\vozacView.cshtml" />
     <Content Include="Views\Projekat\EditVozac.cshtml" />
+    <Content Include="Views\Projekat\UspesnoOtkazanaVoznja.cshtml" />
+    <Content Include="Views\IzmenaVoznjeMusterija.cshtml" />
+    <Content Include="Views\Projekat\PrikazKomentara.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
