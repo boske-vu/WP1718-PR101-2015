@@ -5,7 +5,7 @@
 }
 
 <html>
-<body style="background-color:deeppink">
+<body style="background-color:limegreen">
     <div style="text-align:right">
         <form action="/Projekat/OdjaviMusterija">
             <input type="submit" value="Odjavi se" />
@@ -192,7 +192,7 @@ else if (Model.Pretrazivanje == true)
                     </form>
                 </td>
             </tr>
-            @foreach (WebAPI.Models.Voznja v in @Model.Sortirane)
+            @foreach (WebAPI.Models.Voznja v in @Model.Pretrazene)
                 {
                 <tr>
                     <td>Datum i vreme porudžbine</td>

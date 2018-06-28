@@ -137,9 +137,9 @@
 		<DispecerIme>Luka</DispecerIme>
 		<DispececrPrezime>Bosanac</DispececrPrezime>
 		<Status>Obradjena</Status>
-		<KomentarOpis>ne mogu cekati toliko</KomentarOpis>
+		<KomentarOpis>bez opisa</KomentarOpis>
 		<KomentarDatum>28-Jun-18 1:34:01 AM</KomentarDatum>
-		<KomentarOcena>veomaLose</KomentarOcena>
+		<KomentarOcena>neocenjen</KomentarOcena>
 		<Iznos>
 	</Iznos>
 	</Voznja>
@@ -162,16 +162,16 @@
 	</Iznos>
 	</Voznja>
 	<Voznja>
-		<DatumPorudzbine>28-Jun-18 1:59:45 AM</DatumPorudzbine>
-		<LokacijaNaKojuTaksiDolazi>vukovar_29,vukovar_21020</LokacijaNaKojuTaksiDolazi>
+		<DatumPorudzbine>28-Jun-18 3:26:18 AM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>probaj_232,probaj_243</LokacijaNaKojuTaksiDolazi>
 		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
-		<TipVozila>kombi</TipVozila>
-		<MusterijaIme />
-		<MusterijaPrezime />
-		<VozacIme>Dragana</VozacIme>
-		<VozacPrezime>Varnicic</VozacPrezime>
-		<DispecerIme>Luka</DispecerIme>
-		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<TipVozila>putnickiAutomobil</TipVozila>
+		<MusterijaIme>Maja</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>nema</VozacIme>
+		<VozacPrezime>nema</VozacPrezime>
+		<DispecerIme>nema</DispecerIme>
+		<DispececrPrezime>nema</DispececrPrezime>
 		<Status>KreiranaNaCekanju</Status>
 		<KomentarOpis>bez opisa</KomentarOpis>
 		<KomentarDatum>01-Jan-01 12:00:00 AM</KomentarDatum>
