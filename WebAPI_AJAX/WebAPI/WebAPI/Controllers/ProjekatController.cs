@@ -92,7 +92,7 @@ namespace WebAPI.Controllers
 
         public ActionResult EditVozac()
         {
-            Vozac v = HttpContext.Application["Vozac"] as Vozac;
+            Vozac v = Session["korisnik"] as Vozac;
             return View(v);
         }
 
@@ -186,16 +186,90 @@ namespace WebAPI.Controllers
 
         public ActionResult MusterijaEdit()
         {
-            Musterija m = HttpContext.Application["Musterija"] as Musterija;
+            Musterija m =Session["korisnik"] as Musterija;
 
             return View(m);
+        }
+                            
+        public ActionResult DodeljivanjeVozaca(string date, string musterija, string disp)
+        {
+            Dispecer di = new Dispecer();
+            foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+            {
+                if (d.Korisnicko_ime == disp)
+                {
+                    di = d;
+                }
+            }
+            Voznja voznja = new Voznja();
+            foreach (Voznja v in PostojeciKorisnici.ListaSvihVoznji)
+            {
+                if (v.Datum_i_vreme.ToString() == date && v.Musterija.Korisnicko_ime == musterija)
+                {
+                    v.Dispecer = di;
+                    voznja = v;
+                }
+            }
+
+            foreach (Dispecer d in PostojeciKorisnici.ListaDispecera)
+            {
+                if (d == di)
+                {
+                    d.listaVoznja.Add(voznja);
+                    foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
+                    {
+                        if (d.Korisnicko_ime == k.Korisnicko_ime)
+                        {
+                            k.listaVoznja = d.listaVoznja;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            return View(voznja);
+        }
+
+        public ActionResult Dodeli(string vozac, string datum, string musterija)
+        {
+            Vozac ret = new Vozac();
+            foreach (Vozac v in PostojeciKorisnici.ListaVozaca)
+            {
+                if (v.Korisnicko_ime == vozac)
+                {
+                    foreach (Voznja voznja in PostojeciKorisnici.ListaSvihVoznji)
+                    {
+                        if (voznja.Datum_i_vreme.ToString() == datum && musterija == voznja.Musterija.Korisnicko_ime)
+                        {
+                            v.Zauzet = true;
+                            voznja.Vozac = v;
+                            v.listaVoznja.Add(voznja);
+                            ret = v;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            foreach (Korisnik k in PostojeciKorisnici.ListaKorisnika)
+            {
+                if (k.Korisnicko_ime == ret.Korisnicko_ime)
+                {
+                    k.listaVoznja = ret.listaVoznja;
+                    break;
+                }
+            }
+
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
+
+            return View("UspesnoDodatVozac", ret);
         }
 
 
         #region zatrazenaVoznja
         public ActionResult ZatrazenaVoznja(string ulica, string broj, string mesto, string postanski_broj, string tip_vozila, string x, string y)
         {
-            Musterija m = HttpContext.Application["Musterija"] as Musterija;
+            Musterija m = Session["korisnik"] as Musterija;
 
             Voznja v = new Voznja();
             Adresa a = new Adresa(ulica, broj, mesto, postanski_broj);
@@ -212,14 +286,16 @@ namespace WebAPI.Controllers
             v.Musterija = m;
 
             v.StatusVoznje = StatusVoznje.KreiranaNaCekanju;
+            
             /*
-            Komentar k = new Komentar("d", DateTime.Now, v, 3);
+            Komentar k = new Komentar("d", DateTime.Now, v, 3, );
+            new Komentar()
             Dispecer d = new Dispecer();
             Vozac vozac = new Vozac();
             v.Komentar = k;
             v.Dispecer = d;
             v.Vozac = vozac;
-            v.Iznos = 24;
+            v.Iznos = "24";
             */
             m.listaVoznja.Add(v);
 
@@ -231,6 +307,7 @@ namespace WebAPI.Controllers
                     if (m1.Korisnicko_ime.Equals(m.Korisnicko_ime))
                     {
                         m1.listaVoznja = m.listaVoznja;
+                    break;
                     }
                 }
 
@@ -242,24 +319,7 @@ namespace WebAPI.Controllers
                 }
             }
 
-            /*
-        string path = @"C:\Users\HP\Desktop\Projakat\WP1718-PR101-2015\WebAPI_AJAX\WebAPI\WebAPI\baza.xml";
-        //XmlSerializer serializer = new XmlSerializer(typeof(Musterija));
-
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(path);
-
-            var allNodes = xDoc.GetElementsByTagName("Voznja");
-            var lastNode = allNodes[allNodes.Count - 1];
-            // XmlElement node = SerializeToXmlElement(new Voznja(v.Datum_i_vreme, v.LokacijaNaKojuTaksiDolazi, v.TipAutomobila, m, v.Odrediste, v.Dispecer, v.Vozac, v.Iznos, v.Komentar, v.StatusVoznje));
-            XmlElement node = SerializeToXmlElement(new Voznja(DateTime.Now, l, TipAutomobila.kombi, m2, l, d, vozac, 55, k, StatusVoznje.Formirana));
-
-            XmlNode importNode = xDoc.ImportNode(node, true);
-            xDoc.DocumentElement.AppendChild(importNode);
-            xDoc.Save(path);
-
-        */
-
+            Sacuvaj(PostojeciKorisnici.ListaKorisnika);
             return View("ZatrazenaVoznja", v);
         }
 #endregion
@@ -561,7 +621,7 @@ namespace WebAPI.Controllers
 
         public ActionResult DispecerEdit()
         {
-            Dispecer d = HttpContext.Application["Dispecer"] as Dispecer;
+            Dispecer d = Session["korisnik"] as Dispecer;
             return View(d);
         }
 
@@ -631,14 +691,14 @@ namespace WebAPI.Controllers
 
         public ActionResult VratiProfilMusterija()
         {
-            Musterija m = HttpContext.Application["Musterija"] as Musterija;
+            Musterija m = Session["korisnik"] as Musterija;
 
             return View("musterijaView", m);
         }
 
         public ActionResult VratiProfilDisp()
         {
-            Dispecer d = HttpContext.Application["Dispecer"] as Dispecer;
+            Dispecer d = Session["korisnik"] as Dispecer;
 
             return View("dispecerView", d);
         }
@@ -731,7 +791,7 @@ namespace WebAPI.Controllers
 
         public ActionResult DispecerZakazujeVoznju()
         {
-            Dispecer d = HttpContext.Application["Dispecer"] as Dispecer;
+            Dispecer d = Session["korisnik"] as Dispecer;
             return View(d);
         }
 
@@ -820,7 +880,7 @@ namespace WebAPI.Controllers
 
         public ActionResult PromeniLokacijuVozaca()
         {
-            Vozac v = HttpContext.Application["Vozac"] as Vozac;
+            Vozac v = Session["korisnik"] as Vozac;
             return View(v);
         }
 
@@ -831,7 +891,7 @@ namespace WebAPI.Controllers
 
             Lokacija l = new Lokacija(x, y, a);
 
-            Vozac v = HttpContext.Application["Vozac"] as Vozac;
+            Vozac v = Session["korisnik"] as Vozac;
 
             v.Lokacija = l;
 
@@ -1626,7 +1686,7 @@ namespace WebAPI.Controllers
                     writer.WriteElementString("KomentarOpis", v.Komentar.Opis);
                     writer.WriteElementString("KomentarDatum", v.Komentar.DatumObjave.ToString());
                     writer.WriteElementString("KomentarOcena", v.Komentar.OcenaVoznje.ToString());
-                    writer.WriteElementString("Iznos", v.Iznos.ToString());
+                    writer.WriteElementString("Iznos", v.Iznos);
                     writer.WriteEndElement();
                 }
             }

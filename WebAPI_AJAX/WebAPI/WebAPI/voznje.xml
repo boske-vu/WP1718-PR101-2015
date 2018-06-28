@@ -1,1 +1,181 @@
-﻿<Voznje />
+﻿<Voznje>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>vukovar_29,vukovar_32000</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Maja</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>Dragana</VozacIme>
+		<VozacPrezime>Varnicic</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>Vasica_46,Vasica_22241</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Vanja</MusterijaIme>
+		<MusterijaPrezime>Varnicic</MusterijaPrezime>
+		<VozacIme>nema</VozacIme>
+		<VozacPrezime>nema</VozacPrezime>
+		<DispecerIme>nema</DispecerIme>
+		<DispececrPrezime>nema</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>vukovar_29,vukovar_32000</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Milenko</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>Milica</VozacIme>
+		<VozacPrezime>Varnicic</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>Novi Sad_108,Novi Sad_21000</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Milenko</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>nema</VozacIme>
+		<VozacPrezime>nema</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>novi sad_34,novi sad_21000</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Milenko</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>nema</VozacIme>
+		<VozacPrezime>nema</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>novi sad_12,novi sad_21000</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Milenko</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>nema</VozacIme>
+		<VozacPrezime>nema</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>n_n,n_n</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Milenko</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>nema</VozacIme>
+		<VozacPrezime>nema</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>mesto_34,mesto_21000</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Milenko</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>nema</VozacIme>
+		<VozacPrezime>nema</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>ne mogu cekati toliko</KomentarOpis>
+		<KomentarDatum>28-Jun-18 1:34:01 AM</KomentarDatum>
+		<KomentarOcena>veomaLose</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>27-Jun-18 2:04:19 PM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>mesto2_34,mesto2_21000</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme>Maja</MusterijaIme>
+		<MusterijaPrezime>Bosanac</MusterijaPrezime>
+		<VozacIme>Dragana</VozacIme>
+		<VozacPrezime>Varnicic</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>Obradjena</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 PM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos>
+	</Iznos>
+	</Voznja>
+	<Voznja>
+		<DatumPorudzbine>28-Jun-18 1:59:45 AM</DatumPorudzbine>
+		<LokacijaNaKojuTaksiDolazi>vukovar_29,vukovar_21020</LokacijaNaKojuTaksiDolazi>
+		<KrajnjaLokacija>Nepoznato_0,Nepoznato_0</KrajnjaLokacija>
+		<TipVozila>kombi</TipVozila>
+		<MusterijaIme />
+		<MusterijaPrezime />
+		<VozacIme>Dragana</VozacIme>
+		<VozacPrezime>Varnicic</VozacPrezime>
+		<DispecerIme>Luka</DispecerIme>
+		<DispececrPrezime>Bosanac</DispececrPrezime>
+		<Status>KreiranaNaCekanju</Status>
+		<KomentarOpis>bez opisa</KomentarOpis>
+		<KomentarDatum>01-Jan-01 12:00:00 AM</KomentarDatum>
+		<KomentarOcena>neocenjen</KomentarOcena>
+		<Iznos />
+	</Voznja>
+</Voznje>

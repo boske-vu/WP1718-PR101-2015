@@ -249,6 +249,8 @@
     <Content Include="Views\Projekat\UspesnoOtkazanaVoznja.cshtml" />
     <Content Include="Views\IzmenaVoznjeMusterija.cshtml" />
     <Content Include="Views\Projekat\PrikazKomentara.cshtml" />
+    <Content Include="Views\Projekat\DodeljivanjeVozaca.cshtml" />
+    <Content Include="Views\Projekat\UspesnoDodatVozac.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

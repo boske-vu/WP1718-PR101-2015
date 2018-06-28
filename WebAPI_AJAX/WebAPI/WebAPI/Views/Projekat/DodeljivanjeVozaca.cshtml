@@ -1,0 +1,29 @@
+﻿@model WebAPI.Models.Voznja
+@{
+    ViewBag.Title = "DodeljivanjeVozaca";
+}
+
+<html>
+<body style="background-color:skyblue">
+    <div style="text-align:center">
+        <h1>Odaberite nekog vozača iz liste slobodnih vozača sa traženim tipom automobila</h1>
+        <form action="/Projekat/Dodeli">
+            <select name="vozac">
+                @foreach (WebAPI.Models.Vozac v in WebAPI.Models.PostojeciKorisnici.ListaVozaca)
+                {
+                    if (v.Automobil.Tip == Model.TipAutomobila && v.Zauzet == false)
+                    {
+                        <option value="@v.Korisnicko_ime">@v.Ime</option>
+                    }
+                }
+            </select>
+            <input type="hidden" value="@Model.Datum_i_vreme" name="datum" />
+            <input type="hidden" value="@Model.Musterija.Korisnicko_ime" name="musterija" />
+            <input type="submit" value="Dodeli" />
+            @{
+                Model.StatusVoznje = WebAPI.Models.StatusVoznje.Obradjena;
+            }
+        </form>
+    </div>
+</body>
+</html>

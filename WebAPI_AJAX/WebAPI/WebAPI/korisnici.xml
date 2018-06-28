@@ -35,12 +35,109 @@
 	<Korisnik>
 		<Ime>Maja</Ime>
 		<Prezime>Bosanac</Prezime>
-		<Jmbg>3049094309</Jmbg>
+		<Jmbg>3049094309f</Jmbg>
 		<KorisnickoIme>maja</KorisnickoIme>
 		<Lozinka>m</Lozinka>
 		<Pol>Muski</Pol>
 		<E-Mail>maja@gmail.com</E-Mail>
 		<BrojTelefona>06423423</BrojTelefona>
+		<Uloga>Musterija</Uloga>
+	</Korisnik>
+	<Korisnik>
+		<Ime>Dragana</Ime>
+		<Prezime>Varnicic</Prezime>
+		<Jmbg>34893478</Jmbg>
+		<KorisnickoIme>varni</KorisnickoIme>
+		<Lozinka>v</Lozinka>
+		<Pol>Zenski</Pol>
+		<E-Mail>varni@gmail.com</E-Mail>
+		<BrojTelefona>06445983</BrojTelefona>
+		<Uloga>Vozac</Uloga>
+		<Automobil>
+			<Godiste>2000</Godiste>
+			<Registracija>ns-383-ej</Registracija>
+			<TaxiBroj>1</TaxiBroj>
+			<TipVozila>kombi</TipVozila>
+		</Automobil>
+		<Adresa>
+			<NazivUlice>Vojvodjanska</NazivUlice>
+			<BrojUlice>32</BrojUlice>
+			<Grad>Novi Sad</Grad>
+			<PostanskiBroj>21000</PostanskiBroj>
+			<X>2</X>
+			<Y>2</Y>
+		</Adresa>
+	</Korisnik>
+	<Korisnik>
+		<Ime>Vanja</Ime>
+		<Prezime>Varnicic</Prezime>
+		<Jmbg>3094383</Jmbg>
+		<KorisnickoIme>miska</KorisnickoIme>
+		<Lozinka>m</Lozinka>
+		<Pol>Muski</Pol>
+		<E-Mail>miska@gmail.com</E-Mail>
+		<BrojTelefona>06434932</BrojTelefona>
+		<Uloga>Musterija</Uloga>
+	</Korisnik>
+	<Korisnik>
+		<Ime>Milica</Ime>
+		<Prezime>Varnicic</Prezime>
+		<Jmbg>
+		</Jmbg>
+		<KorisnickoIme>
+		</KorisnickoIme>
+		<Lozinka>Zenski</Lozinka>
+		<Pol>Muski</Pol>
+		<E-Mail>Vozac</E-Mail>
+		<BrojTelefona>
+			</BrojTelefona>
+		<Uloga>Musterija</Uloga>
+	</Korisnik>
+	<Korisnik>
+		<Ime>Milica</Ime>
+		<Prezime>Varnicic</Prezime>
+		<Jmbg>1302952819993</Jmbg>
+		<KorisnickoIme>mica</KorisnickoIme>
+		<Lozinka>m</Lozinka>
+		<Pol>Muski</Pol>
+		<E-Mail>mica@gmail.com</E-Mail>
+		<BrojTelefona>06618273</BrojTelefona>
+		<Uloga>Vozac</Uloga>
+		<Automobil>
+			<Godiste>2012</Godiste>
+			<Registracija>362899</Registracija>
+			<TaxiBroj>23</TaxiBroj>
+			<TipVozila>kombi</TipVozila>
+		</Automobil>
+		<Adresa>
+			<NazivUlice>street</NazivUlice>
+			<BrojUlice>32</BrojUlice>
+			<Grad>citiy</Grad>
+			<PostanskiBroj>34</PostanskiBroj>
+			<X>34</X>
+			<Y>343</Y>
+		</Adresa>
+	</Korisnik>
+	<Korisnik>
+		<Ime>Milenko</Ime>
+		<Prezime>Bosanac</Prezime>
+		<Jmbg>3393949348</Jmbg>
+		<KorisnickoIme>mile</KorisnickoIme>
+		<Lozinka>m</Lozinka>
+		<Pol>Muski</Pol>
+		<E-Mail>mile@gmail.com</E-Mail>
+		<BrojTelefona>0549382349</BrojTelefona>
+		<Uloga>Musterija</Uloga>
+	</Korisnik>
+	<Korisnik>
+		<Ime>Musterija</Ime>
+		<Prezime>Musteric</Prezime>
+		<Jmbg>43432323</Jmbg>
+		<KorisnickoIme>musterija</KorisnickoIme>
+		<Lozinka>m</Lozinka>
+		<Pol>Muski</Pol>
+		<E-Mail>musterija@gmail.com</E-Mail>
+		<BrojTelefona>0544294223</BrojTelefona>
 		<Uloga>Musterija</Uloga>
 	</Korisnik>
 </Ulogovani>

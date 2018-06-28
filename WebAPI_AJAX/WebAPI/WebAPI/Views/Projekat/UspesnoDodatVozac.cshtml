@@ -1,0 +1,15 @@
+﻿@model WebAPI.Models.Vozac
+@{
+    ViewBag.Title = "UspesnoDodatVozac";
+}
+
+<html>
+<body style="background-color:skyblue">
+    <div style="text-align:center">
+        <h1>Uspešno ste dodelili vožnju vozaču @Model.Ime @Model.Prezime</h1>
+    </div>
+    <form action="/Projekat/VratiProfilDisp">
+        <input type="submit" value="Vrati se na profil" />
+    </form>
+</body>
+</html>

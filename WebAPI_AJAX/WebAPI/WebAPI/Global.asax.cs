@@ -54,13 +54,12 @@ namespace WebAPI
 
             Ucitavanje();
         }
-            
-            
+ 
         private DateTime ToDate(string datum)
         {
             DateTime ret;
 
-            string[] dat = datum.Split(' ', '-', ':');
+            string[] dat = datum.Split(' ', '-', ':','/');
 
             int day = int.Parse(dat[0]);
             int month = 0;
@@ -110,9 +109,7 @@ namespace WebAPI
             int minute = int.Parse(dat[4]);
             int second = int.Parse(dat[5]);
 
-            ret = new DateTime(year, month, day, hour, minute, second);
-
-
+            ret = new DateTime(year, month, day, hour, minute, second); 
 
             return ret;
 
@@ -569,7 +566,7 @@ namespace WebAPI
 
         private void SacuvajVoznju(string datum, string pocetna, string krajnja, TipAutomobila tip, string musterijaI, string musterijaP, string vozacI, string vozacP, string dispecerI, string dispecerP, StatusVoznje status, string komentar, string komentarDatum, Ocene ocena, string iznos)
         {
-            DateTime date = ToDate(datum);
+            DateTime date = ToDate("27-Jun-18 14:04:19");
             string[] podela = pocetna.Split(',');
             string[] ulica = podela[0].Split('_');
             string[] grad = podela[1].Split('_');

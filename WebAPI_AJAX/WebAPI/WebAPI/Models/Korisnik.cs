@@ -43,6 +43,7 @@ namespace WebAPI.Models
             Email = email;
             Uloga = uloga;
             Ulogovan = false;
+            listaVoznja = new List<Voznja>();
             Filtrirane = new List<Voznja>();
             Sortirane = new List<Voznja>();
             Pretrazene = new List<Voznja>();
